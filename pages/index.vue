@@ -1,89 +1,71 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+  <v-row>
+    <v-col cols="12">
+      <p align="center">
+        <a href="http://nestjs.com/" target="blank">
+          <img
+            src="https://avatars1.githubusercontent.com/u/52678977?s=400&amp;u=040aa07fa564985892d0fd115a2764579845502d&amp;v=4"
+            width="320" alt="Signati">
+        </a>
+      </p>
+      <section>
+        <h1 class="v-heading text-h3 text-sm-h3 mb-4 mx-auto" style="max-width: 568px;">
+          <a href="#material-design-framework" class="text-decoration-none text-right text-md-left"> # Signati</a></h1>
+        <p class="mx-auto" style="max-width: 568px;">
+          Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema
+          de compatibilidad de las versiones 2.0.
+        </p>
+
+        <v-container>
+          <v-row justify="center">
+            <v-col class="col-auto">
+              <v-btn large dark color="primary" class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+                GET STARTED
+              </v-btn>
+            </v-col>
+            <v-col class="col-auto">
+              <v-btn large dark class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+                GITHUB
+              </v-btn>
+            </v-col>
+          </v-row>
+
+        </v-container>
+      </section>
+      <section>
+        <h2 class="v-heading text-h3 text-sm-h3 mb-4 mx-auto" style="max-width: 568px;">
+          <a href="#project-sponsors" class="text-decoration-none text-right text-md-left"> # </a>
+          Project Sponsors </h2>
+      </section>
     </v-col>
   </v-row>
 </template>
 
-<script>
+<script lang="ts">
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+// import Markup from "~/components/Markup.vue";
+import { defineComponent, ref } from "@nuxtjs/composition-api";
+import iread from './index.md'
 
-export default {
+export default defineComponent({
+  layout: 'landing',
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    VueMarkdown: () => {
+      if (process.client) {
+        return import('vue-markdown-render')
+      }
+    },
+  },
+  setup(props, ctx) {
+    const src = ref(iread)
+    console.log()
+    return {
+      src,
+      iread
+    }
   }
-}
+})
 </script>

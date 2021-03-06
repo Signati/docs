@@ -21,6 +21,12 @@
       ],
       "@/*": [
         "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/util/*": [
+        "./util/*"
       ]
     },
     "types": [

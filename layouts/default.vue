@@ -2,10 +2,11 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
+      clipped
+      absolute
       app
+      fixed
+      width="250"
     >
       <v-list>
         <v-list-item
@@ -28,6 +29,10 @@
       :clipped-left="clipped"
       fixed
       app
+      color="white"
+      outlined
+      style="left: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
+      elevation="0"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn

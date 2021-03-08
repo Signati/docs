@@ -1,5 +1,20 @@
 import { defineComponent, h } from '@nuxtjs/composition-api'
 import Prism from 'prismjs'
+// Imports
+import 'markdown-it-prism'
+import 'prismjs/themes/prism.css'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-css'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-pug'
+import 'prismjs/components/prism-sass'
+import 'prismjs/components/prism-scss'
+import 'prismjs/components/prism-stylus'
+import 'prismjs/components/prism-powershell'
+import 'prismjs/components/prism-shell-session'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-typescript'
 
 export default defineComponent({
   props: {

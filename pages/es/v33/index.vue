@@ -46,10 +46,8 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
 import { defineComponent, ref } from "@nuxtjs/composition-api";
-import iread from './index.md'
 
 export default defineComponent({
-  layout: 'landing',
   components: {
     Logo,
     VuetifyLogo,
@@ -60,11 +58,10 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const src = ref(iread)
+    const src = ref('')
     console.log()
     return {
       src,
-      iread
     }
   }
 })

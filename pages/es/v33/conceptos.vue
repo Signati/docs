@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <section id="concepts" class="ma-15 mt-5">
+    <section id="concepts">
       <h3 class="display-1 basil--text">
         #Concepto
       </h3>
@@ -59,29 +59,29 @@
 
     const cfd = new CFDI();
     const concepto = new Concepts({
-    ClaveProdServ: '',
-    NoIdentificacion: '',
-    Cantidad: '',
-    ClaveUnidad: '',
-    Unidad: '',
-    Descripcion: '',
-    ValorUnitario: '',
-    Importe: '',
-    Descuento: '',
+      ClaveProdServ: '',
+      NoIdentificacion: '',
+      Cantidad: '',
+      ClaveUnidad: '',
+      Unidad: '',
+      Descripcion: '',
+      ValorUnitario: '',
+      Importe: '',
+      Descuento: '',
     });
     concepto.traslado({
-    Base: '369.83',
-    Impuesto: '002',
-    TipoFactor: 'Tasa',
-    TasaOCuota: '0.16',
-    Importe: '59.17',
+      Base: '369.83',
+      Impuesto: '002',
+      TipoFactor: 'Tasa',
+      TasaOCuota: '0.16',
+      Importe: '59.17',
     });
     concepto.retencion({
-    Base: '369.83',
-    Impuesto: '002',
-    TipoFactor: 'Tasa',
-    TasaOCuota: '0.16',
-    Importe: '59.17',
+      Base: '369.83',
+      Impuesto: '002',
+      TipoFactor: 'Tasa',
+      TasaOCuota: '0.16',
+      Importe: '59.17',
     });
 
     await cfd.concepto(concepto);
@@ -113,8 +113,73 @@
       </Markup>
     </section>
     <section id="iedu">
+      <h3 class="display-1 basil--text">
+        #Complemento IEDU
+      </h3>
+
+      <v-simple-table>
+        <thead>
+        <tr>
+          <th align="center">Function</th>
+          <th align="center">Type</th>
+          <th align="center">properties</th>
+          <th align="center">Enum</th>
+          <th align="center">Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td align="center">Construtor</td>
+          <td align="center">XmlIeduAttribute</td>
+          <td align="center">version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE:
+            string; <br>rfcPago: string;
+          </td>
+          <td align="center"></td>
+          <td align="center">Inicializa la clase</td>
+        </tr>
+        </tbody>
+      </v-simple-table>
 
     </section>
+    <Markup
+      language="typescript"
+      :code="`
+import { CFDI, Iedu, Concepts, XmlIeduAttribute } from '@signati/core';
+
+const cfd = new CFDI();
+const concepto = new Concepts({ ...});
+    const ieduObject: XmlIeduAttribute = {
+      version: '1.0',
+      autRVOE: '201587PRIM',
+      CURP: 'EJEMPLOGH101004HQRRRN',
+      nivelEducativo: 'Primaria',
+      nombreAlumno: 'ejemplo garcia correa',
+      rfcPago: 'XAXX010101000',
+    };
+    const iedu = new Iedu(ieduObject);
+    concepto.complemento(iedu);
+
+    await cfd.concepto(concepto);
+      `"
+    >
+
+    </Markup>
+
+    <Markup
+    :code='`
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="" NoIdentificacion="" Cantidad="" ClaveUnidad="" Unidad="" Descripcion="" ValorUnitario="" Importe="" Descuento="">
+        <cfdi:ComplementoConcepto>
+            <iedu:instEducativas version="1.0" nombreAlumno="ejemplo garcia correa" CURP="EJEMPLOGH101004HQRRRN" nivelEducativo="Primaria" autRVOE="201587PRIM" rfcPago="XAXX010101000"/>
+        </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+</cfdi:Conceptos>
+    `'
+    language="xml"
+    >
+
+    </Markup>
   </div>
 
 </template>

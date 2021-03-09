@@ -85,14 +85,16 @@
       elevation="0"
     >
       <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer" />
-      <v-img height="50" max-width="50" class="mr-3" src="../../../logo.png"></v-img>
+      <v-img height="40" max-width="40" class="mr-3" src="../../../logo.png"></v-img>
       <v-toolbar-title v-text="title" />
       <v-spacer />
 
     </v-app-bar>
     <v-main>
       <v-container fluid>
-        <nuxt/>
+        <v-sheet class="pa-5" elevation="0">
+            <nuxt/>
+        </v-sheet>
       </v-container>
     </v-main>
 

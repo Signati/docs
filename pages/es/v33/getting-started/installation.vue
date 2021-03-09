@@ -1,5 +1,5 @@
 <template>
-  <v-row class="ma-15 mt-2">
+  <v-row >
     <v-col>
       <section id="installation">
         <h3 class="display-1 basil--text">

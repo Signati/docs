@@ -1,5 +1,5 @@
 <template>
-  <section class="ma-15 mt-5">
+  <section>
     <h3 class="display-1 basil--text">
       #Receptor
     </h3>

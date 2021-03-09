@@ -19,7 +19,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.8.3",
     "markdown-it-prism": "^2.1.6",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.2",
     "prismjs": "^1.23.0",
     "vue-loader": "^15.9.6",
     "vue-markdown-render": "^1.1.1",

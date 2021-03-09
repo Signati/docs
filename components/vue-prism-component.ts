@@ -56,8 +56,6 @@ export default defineComponent({
         })
       }
       // @ts-ignore
-      console.log(Prism.highlight(code, prismLanguage))
-      // @ts-ignore
       return h(
         'pre',
         {

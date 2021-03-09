@@ -1,7 +1,8 @@
 <template>
-  <Code
+  <CodeContainer
     class="my-0"
     v-bind="$attrs"
+    rounded
   >
     <prism
       ref="code"
@@ -9,21 +10,20 @@
       :inline="inline"
       :language="language"
     />
-  </Code>
+  </CodeContainer>
 </template>
 
-<script>
+<script lang="ts">
 
 // Components
 import Prism from '@/components/vue-prism-component'
-import Code from "~/components/Code.vue";
+import CodeContainer from "~/components/CodeContainer.vue";
+import { defineComponent } from "@nuxtjs/composition-api";
 
-export default {
-  name: 'Markup',
-
+export default defineComponent({
   components: {
     Prism,
-    Code
+    CodeContainer
   },
 
   props: {
@@ -31,5 +31,8 @@ export default {
     inline: Boolean,
     language: String,
   },
-}
+  setup() {
+    return {}
+  }
+})
 </script>

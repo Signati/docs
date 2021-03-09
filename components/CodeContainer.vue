@@ -2,13 +2,13 @@
   <v-sheet
     :color="isDark ? '#1F1F1F' : 'grey lighten-5'"
     :dark="isDark"
-    :rounded="rounded"
+    :rounded="props.rounded"
     class="app-code overflow-hidden"
     dir="ltr"
     outlined
+    ref="el"
   >
-    <slot />
-
+    <slot/>
     <copy-btn
       :target="target"
       class="mr-n2 mt-n2"
@@ -16,34 +16,41 @@
   </v-sheet>
 </template>
 
-<script>
+<script lang="ts">
 
-  import CopyBtn from "~/components/CopyBtn.vue";
+import CopyBtn from "~/components/CopyBtn.vue";
+import { computed, defineComponent, ref } from "@nuxtjs/composition-api";
 
-  export default {
-    name: 'AppCode',
-    comments:{
-      CopyBtn
+export default defineComponent({
+  name: 'AppCode',
+  components: {
+    CopyBtn
+  },
+  props: {
+    rounded: {
+      type: [Boolean, String],
+      default: true,
     },
-    props: {
-      rounded: {
-        type: [Boolean, String],
-        default: true,
-      },
-    },
+  },
+  setup(props) {
+    const el = ref(null)
+    const isDark = computed(() => {
+      return false
+    })
 
-    computed: {
-      isDark () {
-        return false
-      },
-    },
-
-    methods: {
-      target () {
-        return this.$el.querySelector('pre')
-      },
-    },
+    const target = () => {
+      console.log(typeof el.value)
+      //@ts-ignore
+      return el.value.$children[0].$el
+    }
+    return {
+      el,
+      isDark,
+      props,
+      target
+    }
   }
+})
 </script>
 
 <style lang="sass">

@@ -3,7 +3,6 @@
     <v-navigation-drawer
       v-model="drawer"
       clipped
-      absolute
       app
       fixed
       width="250"
@@ -74,12 +73,6 @@
                 </v-list-group>
                  <FirstList v-else :item="item"></FirstList>
                 </span>
-        <FirstList update :item="{
-					url:'/update',
-					icon:'mdi-arrow-up-bold-circle',
-					name:'Actualizaciones',
-					color:'primary'
-				}"></FirstList>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -91,14 +84,15 @@
       style="left: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
       elevation="0"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
+      <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer" />
+      <v-img height="50" max-width="50" class="mr-3" src="../../../logo.png"></v-img>
+      <v-toolbar-title v-text="title" />
       <v-spacer />
 
     </v-app-bar>
     <v-main>
-      <v-container>
-        <nuxt />
+      <v-container fluid>
+        <nuxt/>
       </v-container>
     </v-main>
 
@@ -131,6 +125,7 @@ export default defineComponent({
     FirstList,
   },
   setup() {
+    const title = 'Signati'
     const clipped = ref(false)
     const drawer = ref(true)
     const fixed = ref(false)
@@ -170,23 +165,434 @@ export default defineComponent({
           {
             id: 3,
             isActive: 1,
-            name: 'Dependeces',
+            name: 'Support for plugins',
+            fatherID: 1,
+            level: '1',
+            url: '/es/v33/getting-started/support-for-plugins',
+            icon: '',
+            children: []
+          },
+          {
+            id: 4,
+            isActive: 1,
+            name: 'Official Information',
+            fatherID: 1,
+            level: '1',
+            url: '/es/v33/getting-started/official-information',
+            icon: '',
+            children: []
+          },
+          {
+            id: 5,
+            isActive: 1,
+            name: 'Generate PEM files',
+            fatherID: 1,
+            level: '1',
+            url: '/es/v33/getting-started/generate',
+            icon: '',
+            children: []
+          },
+          {
+            id: 5,
+            isActive: 1,
+            name: 'Generate QR',
+            fatherID: 1,
+            level: '1',
+            url: '/es/v33/getting-started/generate-qr',
+            icon: 'mdi-qrcode-edit',
+            children: []
+          },
+        ]
+      },
+      {
+        id: 7,
+        isActive: 1,
+        name: 'Example',
+        fatherID: 1,
+        level: '1',
+        url: '/es/v33/example',
+        icon: '',
+        children: []
+      },
+      {
+        id: 8,
+        isActive: 1,
+        name: '@signati/core',
+        fatherID: 1,
+        level: '1',
+        url: '',
+        icon: '',
+        children: [
+          {
+            id: 9,
+            isActive: 1,
+            name: 'CFDI',
+            fatherID: 1,
+            level: '1',
+            url: '/es/v33/cfdi',
+            icon: '',
+            children: []
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Emisor',
             fatherID: 1,
             level: '1',
             url: '',
             icon: '',
             children: []
           },
-
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Receptor',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: []
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Relacionado',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: []
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Conceptos',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: [
+              {
+                id: 10,
+                isActive: 1,
+                name: 'conceptos',
+                fatherID: 1,
+                level: '1',
+                url: '/es/v33/concepts/#concepts',
+                icon: '',
+                children: []
+              },
+              {
+                id: 11,
+                isActive: 1,
+                name: 'IEDU',
+                fatherID: 1,
+                level: '1',
+                url: '/es/v33/concepts/#iedu',
+                icon: '',
+                children: []
+              },
+            ]
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Impuestos',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: []
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Complementos',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: [
+              {
+                "id": 50,
+                "isActive": 1,
+                "name": "ine",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#ine",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 51,
+                "isActive": 1,
+                "name": "pago10",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#pago10",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 52,
+                "isActive": 1,
+                "name": "cce11",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#cce11",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 53,
+                "isActive": 1,
+                "name": "aerolineas",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#aerolineas",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 54,
+                "isActive": 1,
+                "name": "combustible",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#combustible",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 55,
+                "isActive": 1,
+                "name": "decreto",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#decreto",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 56,
+                "isActive": 1,
+                "name": "destruccion",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#destruccion",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 57,
+                "isActive": 1,
+                "name": "registro-fiscal",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#registro-fiscal",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 58,
+                "isActive": 1,
+                "name": "donatarias",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#donatarias",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 59,
+                "isActive": 1,
+                "name": "obras-arte",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#obras-arte",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 60,
+                "isActive": 1,
+                "name": "vales-despensa",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#vales-despensa",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 61,
+                "isActive": 1,
+                "name": "divisas",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#divisas",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 62,
+                "isActive": 1,
+                "name": "turistas",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#turistas",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 63,
+                "isActive": 1,
+                "name": "leyenda-fiscal",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#leyenda-fiscal",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 64,
+                "isActive": 1,
+                "name": "pago-especie",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#pago-especie",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 65,
+                "isActive": 1,
+                "name": "spei",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#spei",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 66,
+                "isActive": 1,
+                "name": "servicios-parciales-de-contruccion",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#servicios-parciales-de-contruccion",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 67,
+                "isActive": 1,
+                "name": "vehiculo-usado",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#vehiculo-usado",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 68,
+                "isActive": 1,
+                "name": "ingresos-hidrocarburos",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#ingresos-hidrocarburos",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 69,
+                "isActive": 1,
+                "name": "gastos-hidrocarburos",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#gastos-hidrocarburos",
+                "icon": "",
+                "children": []
+              },
+              {
+                "id": 70,
+                "isActive": 1,
+                "name": "implocal",
+                "fatherID": 1,
+                "level": "1",
+                "url": "/es/v33/complement/#implocal",
+                "icon": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            id: 9,
+            isActive: 1,
+            name: 'Sellar Xml',
+            fatherID: 1,
+            level: '1',
+            url: '',
+            icon: '',
+            children: []
+          },
         ]
-      }
+      },
+      {
+        id: 9,
+        isActive: 1,
+        name: 'Donaciones',
+        fatherID: 1,
+        level: '1',
+        url: '',
+        icon: '',
+        children: []
+      },
     ])
+    const m = () => {
+      return test.map((d, i) => {
+        return {
+          id: 50 + i,
+          isActive: 1,
+          name: d.toLowerCase(),
+          fatherID: 1,
+          level: '1',
+          url: '/es/v33/complement/#' + d.toLowerCase(),
+          icon: '',
+          children: []
+        }
+      })
+    }
+    const test = [
+      "INE",
+      "PAGO10",
+      "CCE11",
+      "AEROLINEAS",
+      "COMBUSTIBLE",
+      "DECRETO",
+      "DESTRUCCION",
+      "REGISTRO-FISCAL",
+      "DONATARIAS",
+      "OBRAS-ARTE",
+      "VALES-DESPENSA",
+      "DIVISAS",
+      "TURISTAS",
+      "LEYENDA-FISCAL",
+      "PAGO-ESPECIE",
+      "SPEI",
+      "SERVICIOS-PARCIALES-DE-CONTRUCCION",
+      "VEHICULO-USADO",
+      "INGRESOS-HIDROCARBUROS",
+      "GASTOS-HIDROCARBUROS",
+      "IMPLOCAL"
+    ]
     return {
+      m,
       clipped,
       drawer,
       fixed,
       items,
       miniVariant,
+      title,
       rutasuser
     }
   }

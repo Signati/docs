@@ -249,7 +249,7 @@ export default defineComponent({
             name: 'Receptor',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/receptor',
             icon: '',
             children: []
           },
@@ -259,7 +259,7 @@ export default defineComponent({
             name: 'Relacionado',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/relacionado',
             icon: '',
             children: []
           },
@@ -269,7 +269,7 @@ export default defineComponent({
             name: 'Conceptos',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/conceptos',
             icon: '',
             children: [
               {
@@ -278,7 +278,7 @@ export default defineComponent({
                 name: 'conceptos',
                 fatherID: 1,
                 level: '1',
-                url: '/es/v33/concepts/#concepts',
+                url: '/es/v33/conceptos/#concepts',
                 icon: '',
                 children: []
               },
@@ -300,7 +300,7 @@ export default defineComponent({
             name: 'Impuestos',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/impuestos',
             icon: '',
             children: []
           },
@@ -531,7 +531,7 @@ export default defineComponent({
             name: 'Sellar Xml',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/sellar',
             icon: '',
             children: []
           },
@@ -543,7 +543,7 @@ export default defineComponent({
         name: 'Donaciones',
         fatherID: 1,
         level: '1',
-        url: '',
+        url: '/es/v33/donaciones',
         icon: '',
         children: []
       },

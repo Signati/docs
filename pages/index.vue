@@ -19,7 +19,10 @@
         <v-container>
           <v-row justify="center">
             <v-col class="col-auto">
-              <v-btn large dark color="primary" class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+              <v-btn large
+                     to="/es/v33/"
+                     href="/es/v33/"
+                     dark color="primary" class="v-btn v-btn--has-bg theme--dark v-size--x-large">
                 GET STARTED
               </v-btn>
             </v-col>

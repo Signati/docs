@@ -239,7 +239,7 @@ export default defineComponent({
             name: 'Emisor',
             fatherID: 1,
             level: '1',
-            url: '',
+            url: '/es/v33/emisor',
             icon: '',
             children: []
           },

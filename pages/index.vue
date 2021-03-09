@@ -20,8 +20,8 @@
           <v-row justify="center">
             <v-col class="col-auto">
               <v-btn large
-                     to="/es/v33/"
-                     href="/es/v33/"
+                     to="/es/v33/getting-started/installation"
+                     href="/es/v33/getting-started/installation"
                      dark color="primary" class="v-btn v-btn--has-bg theme--dark v-size--x-large">
                 GET STARTED
               </v-btn>

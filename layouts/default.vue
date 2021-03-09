@@ -288,7 +288,7 @@ export default defineComponent({
                 name: 'IEDU',
                 fatherID: 1,
                 level: '1',
-                url: '/es/v33/concepts/#iedu',
+                url: '/es/v33/conceptos/#iedu',
                 icon: '',
                 children: []
               },

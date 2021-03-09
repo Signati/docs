@@ -32,7 +32,8 @@ export default defineComponent({
   },
   setup(props, { slots, attrs }) {
     const defaultSlot = (slots && slots.default && slots.default()) || []
-    const code = props.code
+    const code = props.code ? props.code : (defaultSlot && defaultSlot.length) ? defaultSlot : '';
+    console.log('primas',defaultSlot)
     const inline = props.inline
     const language = props.language
     const prismLanguage = Prism.languages[language]
@@ -52,6 +53,9 @@ export default defineComponent({
           domProps: {
             // @ts-ignore
             innerHTML: Prism.highlight(code, prismLanguage)
+          },
+          slot: {
+
           }
         })
       }

@@ -59,7 +59,7 @@
                             </v-list-item-title>
                         </template>
                         <FirstList v-for="(childtwo,index) in childone.children"
-                                   :secondchild="true"
+                                   :secondchild="false"
                                    :item="childtwo"
                                    :key="index"></FirstList>
 
@@ -675,3 +675,9 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+html {
+  font-family: "DM Sans";
+}
+
+</style>

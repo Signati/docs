@@ -85,8 +85,10 @@
       elevation="0"
     >
       <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer"/>
-      <v-img height="40" max-width="40" class="mr-3" src="../../../logo.png"></v-img>
+      <v-img height="40" max-width="40" class="ml-10 mr-3" src="../../../logo.png"></v-img>
       <v-toolbar-title v-text="title"/>
+      <v-spacer/>
+        <Search></Search>
       <v-spacer/>
 
     </v-app-bar>
@@ -183,6 +185,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
+import Search from "~/components/Search.vue";
 
 export interface RoutePath {
   id: number;
@@ -198,6 +201,7 @@ export interface RoutePath {
 export default defineComponent({
   components: {
     FirstList,
+    Search
   },
   setup() {
     const title = 'Signati'

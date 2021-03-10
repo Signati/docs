@@ -3,6 +3,7 @@
                  :to="statePropd.item.url"
                  dense
                  nuxt
+                 style="min-height: 32px; !important;max-height: 32px !important; margin-bottom: 4px;"
                  :class="statePropd.secondchild ? 'ml-3':''"
     >
       <div v-if="statePropd.update" class="v-avatar flex-0-1-auto ml-n2"
@@ -16,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { computed,defineComponent, useStore } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useStore } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -45,7 +46,11 @@ export default defineComponent({
 
 <style scoped>
 .active {
-    background-color: #f6f9fc !important;
-    border-color: #f6f9fc !important;
+  background-color: #f6f9fc !important;
+  border-color: #f6f9fc !important;
+}
+
+.v-list-item.v-list-item.v-list-item--default {
+  min-height: 32px;
 }
 </style>

@@ -85,12 +85,14 @@
       elevation="0"
     >
       <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer"/>
-      <v-img height="40" max-width="40" class="ml-10 mr-3" src="../../../logo.png"></v-img>
-      <v-toolbar-title v-text="title"/>
+      <v-img height="40" max-width="40" class="ml-8 mr-4" src="../../../logo.png"></v-img>
+      <v-toolbar-title class="primary--text" v-text="title"/>
       <v-spacer/>
         <Search></Search>
       <v-spacer/>
-
+      <v-btn icon color="primary">
+        <v-icon>{{mdiGithub}}</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawerRight"
@@ -186,7 +188,7 @@
 import { defineComponent, ref } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Search from "~/components/Search.vue";
-
+import { mdiGithub } from '@mdi/js';
 export interface RoutePath {
   id: number;
   isActive: number | boolean;
@@ -204,7 +206,7 @@ export default defineComponent({
     Search
   },
   setup() {
-    const title = 'Signati'
+    const title = 'Signati/Core'
     const clipped = ref(false)
     const drawerRight = ref(true)
     const drawer = ref(true)
@@ -674,6 +676,7 @@ export default defineComponent({
       items,
       miniVariant,
       title,
+      mdiGithub,
       rutasuser
     }
   }

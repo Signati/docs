@@ -17,12 +17,11 @@
         :flat="!isFocused && !isSearching"
         :placeholder="placeholder"
         autocomplete="off"
-        class="mx-2 mx-md-4"
         dense
         hide-details
         solo
-        style="max-width: 450px;"
         @focus="onFocus"
+        @focusout="onFocus"
       >
         <template #prepend-inner>
           <v-icon
@@ -50,21 +49,28 @@ export default defineComponent({
   setup(){
 
 
-    const isFocused  = ref<boolean>(false)
+    const isFocused = ref<boolean>(false)
     const menuModel = ref<boolean>(false)
+    const isSearching = ref<boolean>(false)
     const searchString = ''
     const placeholder = 'buscar'
-    const isDark  = ref<boolean>(false)
-    const resetSearch =  () => {
+    const isDark = ref<boolean>(false)
+    const resetSearch = () => {
 
     }
-    return{
+    const onFocus = () => {
+      console.log('focus')
+      isFocused.value = !isFocused.value
+    }
+    return {
       resetSearch,
       isDark,
       isFocused,
       menuModel,
       searchString,
-      placeholder
+      placeholder,
+      isSearching,
+      onFocus
     }
 
   }

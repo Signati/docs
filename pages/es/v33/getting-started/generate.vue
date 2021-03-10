@@ -29,27 +29,28 @@
     <v-tabs-items v-model="tab">
       <v-tab-item :key="1">
         Instalar librería:
-        Debian/Ubuntu:
         <Markup :code="`
-        sudo apt-get install openssl
-        `" language="bash"></Markup>
-        CentOS, Red Hat:
+sudo apt-get install openssl
+        `" language="bash" title="Debian/Ubuntu"></Markup>
+        <br>
         <Markup :code="`
-        yum install openssl
-        `" language="bash"></Markup>
+yum install openssl
+        `" language="bash" title="CentOS, Red Hat"></Markup>
+        <br>
         Ejecutar desde terminal
 
-        Archivo key.pem
         <Markup
           :code="`
          openssl pkcs8 -inform DER -in nombrearchivo.key -out nombrearchivo.key.pem -passin pass:contraseña
           `"
+          title="archivo key.pem"
           language="bash"></Markup>
-        archivo cer.pem
+        <br>
         <Markup
           :code="`
          openssl x509 -inform DER -outform PEM -in ruta/nombreArchivo.cer -pubkey -out ruta/nombreArchivo.cer.pem
           `"
+          title="archivo cer.pem"
           language="bash"></Markup>
 
       </v-tab-item>

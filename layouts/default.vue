@@ -101,26 +101,13 @@
       app
       fixed
     >
-      <v-list>
-        <v-list-item>
-          <v-list-item-avatar>
-            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-          </v-list-item-avatar>
-        </v-list-item>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick"/>
+        <input type="hidden" name="hosted_button_id" value="LYAK7CBWDNVMY"/>
+        <input type="image" width="250" height="80" src="/Paypal.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
 
-        <v-list-item link>
-          <v-list-item-content>
-            <v-list-item-title class="title">
-              John Leider
-            </v-list-item-title>
-            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
-          </v-list-item-content>
+      </form>
 
-          <v-list-item-action>
-            <v-icon>mdi-menu-down</v-icon>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list>
       <v-divider></v-divider>
 
       <v-list nav dense>
@@ -189,6 +176,7 @@ import { defineComponent, ref } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Search from "~/components/Search.vue";
 import { mdiGithub } from '@mdi/js';
+
 export interface RoutePath {
   id: number;
   isActive: number | boolean;

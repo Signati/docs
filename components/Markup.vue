@@ -5,7 +5,7 @@
     rounded="lg"
   >
     <div>
-      nuxt.config.js
+      {{title}}
     </div>
     <prism
       ref="code"
@@ -28,11 +28,11 @@ export default defineComponent({
     Prism,
     CodeContainer
   },
-
   props: {
     code: String,
     inline: Boolean,
     language: String,
+    title: String
   },
   setup() {
     return {}

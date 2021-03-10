@@ -33,10 +33,8 @@
               flat
             >
               <v-card-text>
-                <v-sheet v-for="(d,i) of item.bash" :key="i">
-                  {{ d.step }}
-                  <Markup :code="d.data" :language="d.languaje">
-                  </Markup>
+                <v-sheet v-for="(d,i) of item.bash" :key="i" class="mb-4 mt-4">
+                  <Markup :code="d.data" :language="d.languaje" :title="d.step"/>
                 </v-sheet>
               </v-card-text>
             </v-card>

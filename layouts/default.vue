@@ -5,7 +5,97 @@
       clipped
       app
       fixed
-      width="250"
+    >
+<!--      <v-list>-->
+<!--        <v-list-item>-->
+<!--          <v-list-item-avatar>-->
+<!--            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>-->
+<!--          </v-list-item-avatar>-->
+<!--        </v-list-item>-->
+
+<!--        <v-list-item link>-->
+<!--          <v-list-item-content>-->
+<!--            <v-list-item-title class="title">-->
+<!--              John Leider-->
+<!--            </v-list-item-title>-->
+<!--            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>-->
+<!--          </v-list-item-content>-->
+
+<!--          <v-list-item-action>-->
+<!--            <v-icon>mdi-menu-down</v-icon>-->
+<!--          </v-list-item-action>-->
+<!--        </v-list-item>-->
+<!--      </v-list>-->
+<!--      <v-divider></v-divider>-->
+
+      <v-list nav dense :expand="true">
+                <span v-for="(item, i) in rutasuser" :key="i">
+                <v-list-group
+                  :value="true"
+                  v-if="item.children.length > 0"
+                  active-class="active"
+                  group
+                >
+                    <template v-slot:activator>
+                        <v-list-item-icon class="m-0 mr-2">
+                              <v-icon>{{ item.icon }}</v-icon>
+                         </v-list-item-icon>
+                        <v-list-item-title class="ml-0 pl-0">
+                            {{ item.name }}
+                        </v-list-item-title>
+                    </template>
+                    <span v-for="(childone, k) in item.children" :key="k">
+
+                    <v-list-group
+                      v-if="childone.children.length > 0"
+                      sub-group
+                      class="ma-0 pa-0"
+                    >
+                        <template v-slot:activator
+                                  style="background-color: #f6f9fc !important;border-color: #f6f9fc !important;">
+
+                            <v-list-item-title class="ml-0 pl-0" style="position: relative;float: left;left: -15px;">
+                                {{ childone.name }}
+                            </v-list-item-title>
+                        </template>
+                        <FirstList v-for="(childtwo,index) in childone.children"
+                                   :secondchild="true"
+                                   :item="childtwo"
+                                   :key="index"></FirstList>
+
+                    </v-list-group>
+                    <FirstList v-else
+                               :secondchild="true"
+                               :item="childone"
+                    ></FirstList>
+                    </span>
+
+                </v-list-group>
+                 <FirstList v-else :item="item"></FirstList>
+                </span>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+      color="white"
+      outlined
+      style="left: 0px !important; right: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
+      elevation="0"
+    >
+      <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer"/>
+      <v-img height="40" max-width="40" class="mr-3" src="../../../logo.png"></v-img>
+      <v-toolbar-title v-text="title"/>
+      <v-spacer/>
+
+    </v-app-bar>
+    <v-navigation-drawer
+      v-model="drawerRight"
+      right
+      clipped
+      app
+      fixed
     >
       <v-list>
         <v-list-item>
@@ -75,26 +165,9 @@
                 </span>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      color="white"
-      outlined
-      style="left: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
-      elevation="0"
-    >
-      <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer" />
-      <v-img height="40" max-width="40" class="mr-3" src="../../../logo.png"></v-img>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-
-    </v-app-bar>
     <v-main>
       <v-container fluid>
-        <v-sheet class="pa-5" elevation="0">
-            <nuxt/>
-        </v-sheet>
+        <nuxt/>
       </v-container>
     </v-main>
 
@@ -129,6 +202,7 @@ export default defineComponent({
   setup() {
     const title = 'Signati'
     const clipped = ref(false)
+    const drawerRight = ref(true)
     const drawer = ref(true)
     const fixed = ref(false)
     const items = [
@@ -591,6 +665,7 @@ export default defineComponent({
       m,
       clipped,
       drawer,
+      drawerRight,
       fixed,
       items,
       miniVariant,

@@ -35,7 +35,7 @@ export default defineComponent({
   setup(props) {
     const el = ref(null)
     const isDark = computed(() => {
-      return false
+      return true
     })
 
     const target = () => {

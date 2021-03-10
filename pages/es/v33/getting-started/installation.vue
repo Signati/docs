@@ -10,6 +10,7 @@
           background-color="transparent"
           color="basil"
           grow
+
         >
           <v-tab
             v-for="(item,i) in list"
@@ -22,7 +23,7 @@
           </v-tab>
         </v-tabs>
 
-        <v-tabs-items v-model="tab">
+        <v-tabs-items v-model="tab" :touchless="true">
           <v-tab-item
             v-for="(item,k) in list"
             :key="k"
@@ -110,7 +111,9 @@ export default defineComponent({
           {
             step: 'Installation',
             languaje: 'bash',
-            data: `npm i --save @signati/core`
+            data: `
+npm i --save @signati/core
+            `
           },
         ]
       },

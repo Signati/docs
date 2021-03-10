@@ -2,8 +2,11 @@
   <CodeContainer
     class="my-0"
     v-bind="$attrs"
-    rounded
+    rounded="lg"
   >
+    <div>
+      nuxt.config.js
+    </div>
     <prism
       ref="code"
       :code="code"

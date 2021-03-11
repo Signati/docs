@@ -90,6 +90,7 @@
       <v-spacer/>
         <Search></Search>
       <v-spacer/>
+      v3.3.8
       <v-btn icon color="primary">
         <v-icon>{{mdiGithub}}</v-icon>
       </v-btn>

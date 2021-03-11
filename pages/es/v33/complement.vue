@@ -1,78 +1,37 @@
 <template>
   <div>
-    <section id="ine">
+    <section v-for="sect of complementsList" :id="sect.uuid" :key="sect.uuid">
       <h3 class="display-1 basil--text">
         # Complemeto INE
       </h3>
-    <v-simple-table>
-      <thead>
-      <tr>
-        <th align="center">Function</th>
-        <th align="center">Type</th>
-        <th align="center">properties</th>
-        <th align="center">Enum</th>
-        <th align="center">Descripcion</th>
-      </tr>
-      </thead>
-      <tbody><tr>
-        <td align="center">Construtor</td>
-        <td align="center">XmlIneAttribute</td>
-        <td align="center">Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string;</td>
-        <td align="center"></td>
-        <td align="center">Inicializa la clase</td>
-      </tr>
-      <tr>
-        <td align="center">Entidad</td>
-        <td align="center">XmlIneEntidadAttribute</td>
-        <td align="center">ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne;</td>
-        <td align="center"></td>
-        <td align="center"></td>
-      </tr>
-      <tr>
-        <td align="center">Contabilidad</td>
-        <td align="center">XmlIneContabilidadAttribute</td>
-        <td align="center">IdContabilidad: string;</td>
-        <td align="center"></td>
-        <td align="center"></td>
-      </tr>
-      </tbody></v-simple-table>
-      <Markup
-      :code="`
-import { Ine } from '@signati/core';
-const ine = new Ine({
-      Version: '1.0',
-      TipoProceso: 'Ordinario',
-      IdContabilidad: '9',
-      TipoComite: 'Ejecutivo Estatal',
-    });
-    ine.Entidad({ Ambito: 'Federal', ClaveEntidad: 'ROO' });
-    ine.Contabilidad({ IdContabilidad: '9' });
-    this.cfd.complemento(ine);
-          `"
-      language="typescript"
-      ></Markup>
-
-      <Markup
-
-      :code='`<?xml version="1.0" encoding="UTF-8"?>
-
-<cfdi:Complemento>
-  <ine:INE Version="1.0" TipoProceso="Ordinario" IdContabilidad="9" TipoComite="Ejecutivo Estatal">
-   <ine:Entidad Ambito="Federal" ClaveEntidad="ROO">
-     <ine:Contabilidad IdContabilidad="9"/>
-   </ine:Entidad>
-  </ine:INE>
-</cfdi:Complemento>`'
-
-      language="xml"
-      >
-
-      </Markup>
-    </section>
-    <section id="pago10">
-      <h3 class="display-1 basil--text">
-        # complemeto-pago10
-      </h3>
+      <v-simple-table v-for="table of sect.table">
+        <thead>
+        <tr>
+          <th align="center">Function</th>
+          <th align="center">Type</th>
+          <th align="center">properties</th>
+          <th align="center">Enum</th>
+          <th align="center">Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item of table.data">
+          <td>
+            <v-btn text link tile color="primary">
+              {{ item.function }}
+            </v-btn>
+          </td>
+          <td>{{ item.type }}</td>
+          <td>{{ item.properties }}</td>
+          <td>{{ item.enum }}</td>
+          <td>{{ item.descripcion }}</td>
+        </tr>
+        </tbody>
+      </v-simple-table>
+      <div v-for="code of sect.markup">
+        <Markup :code="code.code" :language="code.language"/>
+        <br>
+      </div>
     </section>
   </div>
 </template>
@@ -80,13 +39,16 @@ const ine = new Ine({
 <script lang="ts">
 import { defineComponent } from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
+import { complementsList } from "~/util/complements-list";
 
 export default defineComponent({
   components: {
     Markup
   },
   setup() {
-    return {}
+    return {
+      complementsList
+    }
   }
 })
 </script>

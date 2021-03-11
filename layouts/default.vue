@@ -158,7 +158,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <v-container fluid>
+      <v-container>
         <nuxt/>
       </v-container>
     </v-main>

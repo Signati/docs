@@ -9,10 +9,15 @@
       style="left: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
       elevation="0"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
+      <v-img height="40" max-width="40" class="ml-8 mr-4" src="../../../logo.png"></v-img>
+      <v-toolbar-title class="primary--text" v-text="title"/>
+      <v-spacer/>
+      <Search></Search>
+      <v-spacer/>
+      v3.3.8
+      <v-btn icon color="primary">
+        <v-icon>{{ mdiGithub }}</v-icon>
+      </v-btn>
 
     </v-app-bar>
     <v-main>
@@ -29,30 +34,27 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data () {
+<script lang="ts">
+import { defineComponent, ref } from "@nuxtjs/composition-api";
+import { mdiGithub } from "@mdi/js";
+import { genAppMetaInfo } from "~/util/metadata";
+import metadata from '../data/metadata.json'
+
+export default defineComponent({
+  head: genAppMetaInfo(metadata),
+  setup() {
+    const clipped = ref<boolean>(false);
+    const drawer = ref<boolean>(false);
+    const fixed = ref<boolean>(false);
+    const title = ref<string>('Signati');
+
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Signati'
+      clipped,
+      drawer,
+      fixed,
+      title,
+      mdiGithub
     }
   }
-}
+})
 </script>

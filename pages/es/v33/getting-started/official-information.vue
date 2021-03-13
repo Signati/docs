@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "support-for-plugins",
@@ -57,7 +57,12 @@ export default defineComponent({
       }
     ]
 
+    const { commit } = useStore()
+    onMounted(() => {
+      commit('menu/setRoutes', [
 
+      ])
+    })
     return {
       links
     }

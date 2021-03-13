@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
 import { complementsList } from "~/util/complements-list";
 
@@ -53,6 +53,48 @@ export default defineComponent({
     Markup
   },
   setup() {
+
+    const m = () => {
+      return test.map((d, i) => {
+        return {
+          id: 50 + i,
+          isActive: 1,
+          name: d.toLowerCase(),
+          fatherID: 1,
+          level: '1',
+          url: '/es/v33/complementos/#' + d.toLowerCase(),
+          icon: '',
+          children: []
+        }
+      })
+    }
+    const test = [
+      "INE",
+      "PAGO10",
+      "CCE11",
+      "AEROLINEAS",
+      "COMBUSTIBLE",
+      "DECRETO",
+      "DESTRUCCION",
+      "REGISTRO-FISCAL",
+      "DONATARIAS",
+      "OBRAS-ARTE",
+      "VALES-DESPENSA",
+      "DIVISAS",
+      "TURISTAS",
+      "LEYENDA-FISCAL",
+      "PAGO-ESPECIE",
+      "SPEI",
+      "SERVICIOS-PARCIALES-DE-CONTRUCCION",
+      "VEHICULO-USADO",
+      "INGRESOS-HIDROCARBUROS",
+      "GASTOS-HIDROCARBUROS",
+      "IMPLOCAL"
+    ]
+    const { commit } = useStore()
+    onMounted(() => {
+      commit('menu/setRoutes', m())
+    })
     return {
       complementsList
     }

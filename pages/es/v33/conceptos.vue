@@ -185,7 +185,7 @@ const concepto = new Concepts({ ...});
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
 
 export default defineComponent({
@@ -193,6 +193,12 @@ export default defineComponent({
     Markup
   },
   setup() {
+    const { commit } = useStore()
+    onMounted(() => {
+      commit('menu/setRoutes', [
+
+      ])
+    })
     return {}
   }
 })

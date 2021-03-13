@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
 
 export default defineComponent({
@@ -147,6 +147,13 @@ export default defineComponent({
   </cfdi:Impuestos>
   <cfdi:Complemento/>
 </cfdi:Comprobante>`
+
+    const { commit } = useStore()
+    onMounted(() => {
+      commit('menu/setRoutes', [
+
+      ])
+    })
     return {
       code,
       xml

@@ -45,7 +45,7 @@
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
-import { defineComponent, ref } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, ref, useStore } from "@nuxtjs/composition-api";
 
 export default defineComponent({
   components: {
@@ -59,7 +59,13 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const src = ref('')
-    console.log()
+
+    const { commit } = useStore()
+    onMounted(() => {
+      commit('menu/setRoutes', [
+
+      ])
+    })
     return {
       src,
     }

@@ -35,14 +35,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@nuxtjs/composition-api";
+import { defineComponent, ref, useContext, useRouter } from "@nuxtjs/composition-api";
 import { mdiGithub } from "@mdi/js";
 import { genAppMetaInfo } from "~/util/metadata";
 import metadata from '../data/metadata.json'
 
 export default defineComponent({
   head: genAppMetaInfo(metadata),
-  setup() {
+  setup(props, { root }) {
+    // const context = useContext()
+    // console.log(context.$ga)
+    //root.$options.$ga.page(router)
     const clipped = ref<boolean>(false);
     const drawer = ref<boolean>(false);
     const fixed = ref<boolean>(false);

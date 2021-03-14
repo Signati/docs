@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, useStore } from "@nuxtjs/composition-api";
+import { defineComponent, onMounted, ref, useContext, useRouter, useStore } from "@nuxtjs/composition-api";
 import Markup from '@/components/Markup.vue'
 
 export default defineComponent({
@@ -190,6 +190,14 @@ npm i --save @signati/core
       ])
     })
 
+    const context = useContext()
+    const router = useRouter()
+    if (process.client) {
+      // @ts-ignore
+      const ga = context.$ga
+      // @ts-ignore
+      ga!.page(router)
+    }
     return {
       tab,
       list,

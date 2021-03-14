@@ -43,9 +43,14 @@ import metadata from '../data/metadata.json'
 export default defineComponent({
   head: genAppMetaInfo(metadata),
   setup(props, { root }) {
-    // const context = useContext()
-    // console.log(context.$ga)
-    //root.$options.$ga.page(router)
+    const context = useContext()
+    const router = useRouter()
+    if (process.client) {
+      // @ts-ignore
+      const ga = context.$ga
+      // @ts-ignore
+      ga!.page(router)
+    }
     const clipped = ref<boolean>(false);
     const drawer = ref<boolean>(false);
     const fixed = ref<boolean>(false);

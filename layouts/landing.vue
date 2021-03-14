@@ -49,7 +49,11 @@ export default defineComponent({
       // @ts-ignore
       const ga = context.$ga
       // @ts-ignore
-      ga!.page(router)
+      ga.page({
+        page: '/',
+        title: 'Home page',
+        location: window.location.href
+      })
     }
     const clipped = ref<boolean>(false);
     const drawer = ref<boolean>(false);

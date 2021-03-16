@@ -192,16 +192,6 @@ npm i --save @signati/core
 
     const context = useContext()
     const router = useRouter()
-    if (process.client) {
-      // @ts-ignore
-      const ga = context.$ga
-      // @ts-ignore
-      ga.page({
-        page: 'es/v33/getting-started/installation',
-        title: 'Install Page',
-        location: window.location.href
-      })
-    }
     return {
       tab,
       list,

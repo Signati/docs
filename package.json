@@ -24,12 +24,13 @@
     "prismjs": "^1.23.0",
     "vue-loader": "^15.9.6",
     "vue-markdown-render": "^1.1.1",
-    "vuex-pathify": "^1.4.5"
+    "vuex-pathify": "^1.4.5",
+    "vue-analytics": "^5.22.1",
+    "vue-gtag": "^1.11.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.4",
-    "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/vuetify": "^1.11.3",
     "@types/markdown-it": "^12.0.1",
     "@types/prismjs": "^1.16.3"

@@ -60,7 +60,7 @@ export default {
     '@nuxt/content',
   ],
   googleAnalytics: {
-    id: "G-W1M325G695"
+    id: "G-L96E2TZNTG"
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

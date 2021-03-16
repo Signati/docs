@@ -46,7 +46,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/composition-api',
-    '@nuxtjs/google-analytics'
+    '~/googleanalytics/module.js'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,9 +59,6 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
-  googleAnalytics: {
-    id: "G-L96E2TZNTG"
-  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 

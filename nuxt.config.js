@@ -62,11 +62,6 @@ export default {
   googleAnalytics: {
     id: "G-W1M325G695"
   },
-  publicRuntimeConfig: {
-    googleAnalytics: {
-      id: "G-W1M325G695"
-    }
-  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 

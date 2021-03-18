@@ -1,6 +1,6 @@
 <template>
   <v-row >
-    <v-col>
+    <v-col cols="12">
 
       <h3 class="display-1 basil--text">
         # Installation
@@ -13,7 +13,7 @@
 
       >
         <v-tab
-          v-for="(item,i) in list"
+          v-for="(item,i) in listHead"
           :key="i"
         >
           <v-icon :color="item.color" class="mr-2">
@@ -41,10 +41,50 @@
               </v-card-text>
             </v-card>
           </v-tab-item>
+          <v-tab-item>
+            <v-card
+              color="basil"
+              flat
+            >
+              <v-card-text>
+                <v-sheet class="mb-4 mt-4">
+                  <div class="title">OpenSSL</div>
+                  Instalar
+                  https://slproweb.com/products/Win32OpenSSL.html
+                  <br>
+                  c:\OpenSSL-Win32\bin\openssl.exe O  c:\OpenSSL-Win64\bin\openssl.exe
+                  <br>
+                  Solo necesita agregar la ruta del bin OpenSSL (ej: C:\Archivos de programa\OpenSSL-Win64\bin) a la variable del sistema PATH como se muestra a continuación:
+                  <v-img src="/envopenssl.jpg"></v-img>
+                  <div class="title">saxon HE</div>
+
+                  http://saxon.sourceforge.net/#F10HE
+                  <br>
+                  Download for .NET (10.3 Mbytes)
+                  <br>
+                  https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Dotnet/SaxonHE10-3N-setup.exe/download
+                  <br>
+                  Agregar la ruta del bin de Saxon (ej: C:\Program Files\Saxonica\SaxonHE10.3N\bin) a la variable del sistema PATH como se muestra en la imagen anterior:
+
+                </v-sheet>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
         </v-tabs-items>
-
-
-      </section>
+    </v-col>
+    <v-col cols="12">
+      <v-card
+        color="basil"
+        flat
+      >
+        <v-card-text>
+          <v-sheet class="mb-4 mt-4">
+            <Markup title="Installation" language="bash" code="
+npm i --save @signati/core
+"></Markup>
+          </v-sheet>
+        </v-card-text>
+      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -60,6 +100,26 @@ export default defineComponent({
   setup() {
 
     const tab = ref(null)
+    const listHead = [
+      {
+        icon: 'mdi-penguin',
+        title: 'linux',
+        color: 'black',
+        bash: []
+      },
+      {
+        icon: 'mdi-apple',
+        color: 'grey',
+        title: 'macOS',
+        bash: []
+      },
+      {
+        icon: 'mdi-microsoft-windows',
+        color: 'blue',
+        title: 'Windows',
+        bash: []
+      },
+    ]
     const list = [
       {
         icon: 'mdi-penguin',
@@ -106,13 +166,6 @@ sudo ./saxon-he-xVersion-install.sh
 ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═╝╚══════╝
       `
           },
-          {
-            step: 'Installation',
-            languaje: 'bash',
-            data: `
-npm i --save @signati/core
-            `
-          },
         ]
       },
       {
@@ -121,13 +174,6 @@ npm i --save @signati/core
         title: 'macOS',
         bash: []
       },
-      {
-        icon: 'mdi-microsoft-windows',
-        color: 'blue',
-        title: 'Windows',
-        bash: []
-      },
-
     ]
     const { commit } = useStore()
     onMounted(() => {
@@ -195,6 +241,7 @@ npm i --save @signati/core
     return {
       tab,
       list,
+      listHead
     }
   }
 })

@@ -45,16 +45,6 @@ export default defineComponent({
   setup(props, { root }) {
     const context = useContext()
     const router = useRouter()
-    if (process.client) {
-      // @ts-ignore
-      const ga = context.$ga
-      // @ts-ignore
-      ga.page({
-        page: '/',
-        title: 'Home page',
-        location: window.location.href
-      })
-    }
     const clipped = ref<boolean>(false);
     const drawer = ref<boolean>(false);
     const fixed = ref<boolean>(false);

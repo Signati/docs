@@ -90,7 +90,7 @@
       >
 
       </Markup>
-
+      <br>
       <Markup
         :code='`
 <?xml version="1.0" encoding="UTF-8"?>
@@ -112,8 +112,10 @@
 
       </Markup>
     </section>
+    <br>
+    <br>
     <section id="iedu">
-      <h3 class="display-1 basil--text">
+      <h3 class="display-1 basil--text pt-15 mt-10">
         #Complemento IEDU
       </h3>
 
@@ -164,7 +166,7 @@ const concepto = new Concepts({ ...});
     >
 
     </Markup>
-
+    <br>
     <Markup
     :code='`
 <?xml version="1.0" encoding="UTF-8"?>
@@ -193,11 +195,29 @@ export default defineComponent({
     Markup
   },
   setup() {
-    const { commit } = useStore()
+    const {commit} = useStore()
     onMounted(() => {
       commit('menu/setRoutes', [
-
-      ])
+        {
+          id: 10,
+          isActive: 1,
+          name: 'conceptos',
+          fatherID: 1,
+          level: '1',
+          url: '/es/v33/conceptos/#concepts',
+          icon: '',
+          children: []
+        },
+        {
+          id: 11,
+          isActive: 1,
+          name: 'IEDU',
+          fatherID: 1,
+          level: '1',
+          url: '/es/v33/conceptos/#iedu',
+          icon: '',
+          children: []
+        }])
     })
     return {}
   }

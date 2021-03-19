@@ -35,6 +35,7 @@
         <td align="center">Agrega Retenciones</td>
       </tr>
       </tbody></v-simple-table>
+    <br>
     <Markup :code="`
 import { CFDI, EmisImpuestosor } from '@signati/core';
 const cfd = new CFDI();
@@ -54,6 +55,7 @@ const impuesto = new Impuestos({TotalImpuestosRetenidos: ''});
 await cfd.impuesto(impuesto);
 
     `" language="typescript"></Markup>
+    <br>
     <Markup :code='`
   <?xml version="1.0" encoding="UTF-8"?>
   <cfdi:Impuestos TotalImpuestosRetenidos="" TotalImpuestosTrasladados="">

@@ -1,5 +1,5 @@
 <template>
-  <v-row >
+  <v-row>
     <v-col cols="12">
 
       <h3 class="display-1 basil--text">
@@ -23,56 +23,82 @@
         </v-tab>
       </v-tabs>
 
-        <v-tabs-items v-model="tab" :touchless="true">
-          <v-tab-item
-            v-for="(item,k) in list"
-            :key="k"
+      <v-tabs-items v-model="tab" :touchless="true">
+        <v-tab-item
+          v-for="(item,k) in list"
+          :key="k"
+        >
+          <v-card
+            color="basil"
+            flat
           >
-            <v-card
-              color="basil"
-              flat
-            >
-              <v-card-text>
-                <v-sheet v-for="(d,i) of item.bash" :key="i" class="mb-4 mt-4">
-                  <section :id="d.step">
-                    <Markup :code="d.data" :language="d.languaje" :title="d.step"/>
-                  </section>
-                </v-sheet>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-          <v-tab-item>
-            <v-card
-              color="basil"
-              flat
-            >
-              <v-card-text>
-                <v-sheet class="mb-4 mt-4">
+            <v-card-text>
+              <v-sheet v-for="(d,i) of item.bash" :key="i" class="mb-4 mt-4">
+                <section :id="d.step">
+                  <Markup :code="d.data" :language="d.languaje" :title="d.step"/>
+                </section>
+              </v-sheet>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card
+            color="basil"
+            flat
+          >
+            <v-card-text>
+              <v-sheet class="mb-4 mt-4">
+                <section id="wopenssl">
+
                   <div class="title">OpenSSL</div>
                   Instalar
+                  <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank">
                   https://slproweb.com/products/Win32OpenSSL.html
-                  <br>
-                  c:\OpenSSL-Win32\bin\openssl.exe O  c:\OpenSSL-Win64\bin\openssl.exe
-                  <br>
-                  Solo necesita agregar la ruta del bin OpenSSL (ej: C:\Archivos de programa\OpenSSL-Win64\bin) a la variable del sistema PATH como se muestra a continuación:
-                  <v-img src="/envopenssl.jpg"></v-img>
+                  </a>
+                  <v-alert
+                    outlined
+                    text
+                  >
+                    <p>
+                      c:\OpenSSL-Win32\bin\openssl.exe O c:\OpenSSL-Win64\bin\openssl.exe
+                    </p>
+                    Solo necesita agregar la ruta del bin OpenSSL (ej: C:\Archivos de programa\OpenSSL-Win64\bin) a la
+                    variable del sistema PATH como se muestra a continuación:
+                  </v-alert>
+
+                  <v-img src="/env.png"></v-img>
+                </section>
+                <br>
+                <section id="wsaxon">
+
                   <div class="title">saxon HE</div>
+                  <a href="http://saxon.sourceforge.net/#F10HE" target="_blank">
+                    http://saxon.sourceforge.net/#F10HE
+                  </a>
+                  <br>
+                  <a href="https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Dotnet/SaxonHE10-3N-setup.exe/download" target="_blank">
+                    Download for .NET (10.3 Mbytes)
+                  </a>
+                  <br>
 
-                  http://saxon.sourceforge.net/#F10HE
-                  <br>
-                  Download for .NET (10.3 Mbytes)
-                  <br>
-                  https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Dotnet/SaxonHE10-3N-setup.exe/download
-                  <br>
-                  Agregar la ruta del bin de Saxon (ej: C:\Program Files\Saxonica\SaxonHE10.3N\bin) a la variable del sistema PATH como se muestra en la imagen anterior:
+                  <v-alert
+                    outlined
+                    text
+                  >
 
-                </v-sheet>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
+                  Agregar la ruta del bin de Saxon (ej: C:\Program Files\Saxonica\SaxonHE10.3N\bin) a la variable del
+                  sistema PATH como se muestra en la imagen:
+                  </v-alert>
+                  <v-img src="/env.png"></v-img>
+                </section>
+              </v-sheet>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
     </v-col>
     <v-col cols="12">
+      <section id="Installation">
       <v-card
         color="basil"
         flat
@@ -85,12 +111,13 @@ npm i --save @signati/core
           </v-sheet>
         </v-card-text>
       </v-card>
+      </section>
     </v-col>
   </v-row>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, useContext, useRouter, useStore } from "@nuxtjs/composition-api";
+import {defineComponent, onMounted, ref, useContext, useRouter, useStore} from "@nuxtjs/composition-api";
 import Markup from '@/components/Markup.vue'
 
 export default defineComponent({
@@ -175,7 +202,7 @@ sudo ./saxon-he-xVersion-install.sh
         bash: []
       },
     ]
-    const { commit } = useStore()
+    const {commit} = useStore()
     onMounted(() => {
       commit('menu/setRoutes', [
         {
@@ -204,12 +231,6 @@ sudo ./saxon-he-xVersion-install.sh
               name: 'Saxon-HE',
               url: '/es/v33/getting-started/installation/#Saxon-HE',
               children: []
-            },
-            {
-              id: 11,
-              name: 'Installation',
-              url: '/es/v33/getting-started/installation/#Installation',
-              children: []
             }
           ],
         },
@@ -227,12 +248,35 @@ sudo ./saxon-he-xVersion-install.sh
           id: 3,
           name: 'Windows',
           level: '1',
-          children: [],
+          children: [
+            {
+              id: 21,
+              name: 'Openssl',
+              url: '/es/v33/getting-started/installation/#wopenssl',
+              children: []
+            },
+            {
+              id: 21,
+              name: 'Saxon-HE',
+              url: '/es/v33/getting-started/installation/#wsaxon',
+              children: []
+            }
+          ],
           icon: 'mdi-microsoft-windows',
           url: '',
           isActive: 1,
           fatherID: 0
         },
+        {
+          id: 4,
+          name: 'Installation',
+          url: '/es/v33/getting-started/installation/#Installation',
+          level: '1',
+          children: [],
+          icon: 'mdi-npm ',
+          isActive: 1,
+          fatherID: 0,
+        }
       ])
     })
 

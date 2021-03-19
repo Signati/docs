@@ -90,7 +90,7 @@
       <v-spacer/>
         <Search></Search>
       <v-spacer/>
-      v3.3.8
+      v3.3.9
       <v-btn icon color="primary">
         <v-icon>{{mdiGithub}}</v-icon>
       </v-btn>
@@ -322,30 +322,9 @@ export default defineComponent({
             name: 'Conceptos',
             fatherID: 1,
             level: '1',
-            url: '/es/v33/conceptos',
+            url: '/es/v33/conceptos/#concepts',
             icon: '',
-            children: [
-              {
-                id: 10,
-                isActive: 1,
-                name: 'conceptos',
-                fatherID: 1,
-                level: '1',
-                url: '/es/v33/conceptos/#concepts',
-                icon: '',
-                children: []
-              },
-              {
-                id: 11,
-                isActive: 1,
-                name: 'IEDU',
-                fatherID: 1,
-                level: '1',
-                url: '/es/v33/conceptos/#iedu',
-                icon: '',
-                children: []
-              },
-            ]
+            children: []
           },
           {
             id: 9,

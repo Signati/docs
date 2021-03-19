@@ -14,7 +14,7 @@
       <v-spacer/>
       <Search></Search>
       <v-spacer/>
-      v3.3.8
+      v3.3.9
       <v-btn icon color="primary">
         <v-icon>{{ mdiGithub }}</v-icon>
       </v-btn>

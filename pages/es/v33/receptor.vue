@@ -22,6 +22,7 @@
       </tr>
       </tbody>
     </v-simple-table>
+    <br>
     <Markup :code="`
 import { CFDI, Receptor } from '@signati/core';
 
@@ -34,6 +35,7 @@ const receptor = new Receptor({
 await cfd.receptor(receptor);
     `" language="typescript">
     </Markup>
+    <br>
     <Markup :code='`
 <?xml version="1.0" encoding="UTF-8"?>
 <cfdi:Receptor Rfc="XAXX010101000" Nombre="PUBLICO EN GENERAL" UsoCFDI="G01"/>

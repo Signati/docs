@@ -91,7 +91,7 @@
         <Search></Search>
       <v-spacer/>
       v3.3.9
-      <v-btn icon color="primary">
+      <v-btn icon href="https://github.com/Signati/core" target="_blank" color="primary">
         <v-icon>{{mdiGithub}}</v-icon>
       </v-btn>
     </v-app-bar>
@@ -360,6 +360,16 @@ export default defineComponent({
       },
       {
         id: 9,
+        isActive: 1,
+        name: 'PDF',
+        fatherID: 1,
+        level: '1',
+        url: '/es/v33/pdf',
+        icon: '',
+        children: []
+      },
+      {
+        id: 10,
         isActive: 1,
         name: 'Donaciones',
         fatherID: 1,

@@ -22,6 +22,7 @@
       </tr>
       </tbody>
     </v-simple-table>
+    <br>
     <Markup :code="`
 import { CFDI, Relacionado } from '@signati/core';
 const cfd = new CFDI();
@@ -33,6 +34,7 @@ const relation = new Relacionado({ TipoRelacion: '01' });
 await cfd.relacionados(relation);
     `" language="typescript">
     </Markup>
+    <br>
     <Markup :code='`
 <?xml version="1.0" encoding="UTF-8"?>
 

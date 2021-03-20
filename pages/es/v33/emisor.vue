@@ -27,6 +27,7 @@
       </tr>
       </tbody>
     </v-simple-table>
+    <br>
     <Markup :code="`
 import { CFDI, Emisor } from '@signati/core';
 
@@ -38,7 +39,7 @@ const emisor = new Emisor({
 });
 await cfd.emisor(emisor);
 `" language="typescript"></Markup>
-
+    <br>
     <Markup :code='`
  <?xml version="1.0" encoding="UTF-8"?>
  <cfdi:Emisor Rfc="" Nombre="" RegimenFiscal="601"/>

@@ -15,8 +15,8 @@
       <Search></Search>
       <v-spacer/>
       v3.3.9
-      <v-btn icon color="primary">
-        <v-icon>{{ mdiGithub }}</v-icon>
+      <v-btn icon href="https://github.com/Signati/core" target="_blank" color="primary">
+        <v-icon>{{mdiGithub}}</v-icon>
       </v-btn>
 
     </v-app-bar>

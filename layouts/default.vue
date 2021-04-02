@@ -6,27 +6,6 @@
       app
       fixed
     >
-<!--      <v-list>-->
-<!--        <v-list-item>-->
-<!--          <v-list-item-avatar>-->
-<!--            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>-->
-<!--          </v-list-item-avatar>-->
-<!--        </v-list-item>-->
-
-<!--        <v-list-item link>-->
-<!--          <v-list-item-content>-->
-<!--            <v-list-item-title class="title">-->
-<!--              John Leider-->
-<!--            </v-list-item-title>-->
-<!--            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>-->
-<!--          </v-list-item-content>-->
-
-<!--          <v-list-item-action>-->
-<!--            <v-icon>mdi-menu-down</v-icon>-->
-<!--          </v-list-item-action>-->
-<!--        </v-list-item>-->
-<!--      </v-list>-->
-<!--      <v-divider></v-divider>-->
 
       <v-list nav dense :expand="true">
                 <span v-for="(item, i) in rutasuser" :key="i">
@@ -173,11 +152,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, useStore } from "@nuxtjs/composition-api";
+import { computed, defineComponent,onBeforeMount, ref, useStore } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Search from "~/components/Search.vue";
 import { mdiGithub } from '@mdi/js';
 import { RoutePath } from "~/types/RoutePath";
+import { isMobile } from 'mobile-device-detect';
 
 export default defineComponent({
   components: {
@@ -379,7 +359,12 @@ export default defineComponent({
         children: []
       },
     ])
-
+    onBeforeMount(()=>{
+      if (isMobile){
+        drawer.value = false;
+        drawerRight.value = false
+      }
+    })
     return {
       clipped,
       drawer,

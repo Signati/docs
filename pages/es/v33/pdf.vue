@@ -8,7 +8,10 @@
         v-for="(pdf,i) in pdfList"
         :key="i"
         class="d-flex child-flex"
-        cols="4"
+        cols="12"
+        sm="12"
+        md="4"
+        lg="4"
       >
 
 

@@ -54,26 +54,7 @@
                 </span>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      color="white"
-      outlined
-      style="left: 0px !important; right: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
-      elevation="0"
-    >
-      <v-app-bar-nav-icon class="d-lg-none d-xl-flex" @click.stop="drawer = !drawer"/>
-      <v-img height="40" max-width="40" class="ml-8 mr-4" src="../../../logo.png"></v-img>
-      <v-toolbar-title class="primary--text" v-text="title"/>
-      <v-spacer/>
-        <Search></Search>
-      <v-spacer/>
-      v3.3.9
-      <v-btn icon href="https://github.com/Signati/core" target="_blank" color="primary">
-        <v-icon>{{mdiGithub}}</v-icon>
-      </v-btn>
-    </v-app-bar>
+    <Toolbar v-model="drawer" :hidden-menu="true"></Toolbar>
     <v-navigation-drawer
       v-model="drawerRight"
       right
@@ -154,19 +135,17 @@
 <script lang="ts">
 import { computed, defineComponent,onBeforeMount, ref, useStore } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
-import Search from "~/components/Search.vue";
+import Toolbar from "~/components/core/toolbars/toolbar.vue";
 import { mdiGithub } from '@mdi/js';
 import { RoutePath } from "~/types/RoutePath";
-import { isMobile } from 'mobile-device-detect';
+import { isMobile, isTablet } from 'mobile-device-detect';
 
 export default defineComponent({
   components: {
     FirstList,
-    Search
+    Toolbar
   },
   setup() {
-    const title = 'Signati/Core'
-    const clipped = ref(false)
     const drawerRight = ref(true)
     const drawer = ref(true)
     const fixed = ref(false)
@@ -360,18 +339,16 @@ export default defineComponent({
       },
     ])
     onBeforeMount(()=>{
-      if (isMobile){
+      if (isMobile || isTablet){
         drawer.value = false;
         drawerRight.value = false
       }
     })
     return {
-      clipped,
       drawer,
       drawerRight,
       fixed,
       miniVariant,
-      title,
       mdiGithub,
       menuRoutesRight,
       rutasuser

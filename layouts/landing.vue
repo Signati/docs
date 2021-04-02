@@ -1,25 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      color="white"
-      outlined
-      style="left: 0px !important; border-bottom-color: rgba(0,0,0,.12)!important;"
-      elevation="0"
-    >
-      <v-img height="40" max-width="40" class="ml-8 mr-4" src="../../../logo.png"></v-img>
-      <v-toolbar-title class="primary--text" v-text="title"/>
-      <v-spacer/>
-      <Search></Search>
-      <v-spacer/>
-      v3.3.9
-      <v-btn icon href="https://github.com/Signati/core" target="_blank" color="primary">
-        <v-icon>{{mdiGithub}}</v-icon>
-      </v-btn>
-
-    </v-app-bar>
+    <Toolbar v-model="drawer" :hidden-menu="false"></Toolbar>
     <v-main>
       <v-container>
         <nuxt />
@@ -39,9 +20,13 @@ import { defineComponent, ref, useContext, useRouter } from "@nuxtjs/composition
 import { mdiGithub } from "@mdi/js";
 import { genAppMetaInfo } from "~/util/metadata";
 import metadata from '../data/metadata.json'
+import Toolbar from "~/components/core/toolbars/toolbar.vue";
 
 export default defineComponent({
   head: genAppMetaInfo(metadata),
+  components:{
+    Toolbar
+  },
   setup(props, { root }) {
     const context = useContext()
     const router = useRouter()

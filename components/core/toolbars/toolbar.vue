@@ -26,7 +26,8 @@ import {mdiGithub, mdiMenu} from '@mdi/js';
 import Search from "~/components/Search.vue";
 
 interface PropsToolbar {
-  value: boolean
+  value: boolean;
+  hiddenMenu: boolean;
 }
 
 const Toolbar = defineComponent<PropsToolbar>({

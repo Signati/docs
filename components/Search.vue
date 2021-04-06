@@ -21,6 +21,7 @@
         hide-details
         solo
         @focus="onFocus"
+        @click="menuModel=true"
         @focusout="onFocus"
       >
         <template #prepend-inner>
@@ -35,31 +36,36 @@
     </template>
 
     <v-card>
-     ¿    </v-card>
+      <SearchResults></SearchResults>
+    </v-card>
   </v-menu>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "@nuxtjs/composition-api";
-
+import SearchResults from './SearchResults.vue'
 // This behavior should be easier to do with solo fields
 // TODO: Review this for v3
 export default defineComponent({
   name: 'DefaultSearch',
+  components:{
+    SearchResults
+  },
   setup(){
 
 
     const isFocused = ref<boolean>(false)
-    const menuModel = ref<boolean>(false)
+    const menuModel = ref<boolean>(true)
     const isSearching = ref<boolean>(false)
     const searchString = ''
     const placeholder = 'buscar'
     const isDark = ref<boolean>(false)
     const resetSearch = () => {
-
+     // menuModel.value = true
     }
     const onFocus = () => {
       console.log('focus')
+      //menuModel.value = true
       isFocused.value = !isFocused.value
     }
     return {

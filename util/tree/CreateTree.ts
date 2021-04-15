@@ -1,6 +1,7 @@
-import {RoutePath} from '../../types/components/routePath/RoutePath';
+import {RoutePath} from "~/types/RoutePath";
 
-export async function createTree(routes: RoutePath[]): Promise<RoutePath[]> {
+
+export  function createTree(routes: RoutePath[]): RoutePath[] {
     let routespath = treeify(routes, 'id', 'fatherID', 'children');
     return routespath;
 }

@@ -45,7 +45,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/composition-api',
+    '@nuxtjs/composition-api/module',
     '~/googleanalytics/module.js'
   ],
 

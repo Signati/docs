@@ -55,7 +55,7 @@ export default defineComponent({
 
 
     const isFocused = ref<boolean>(false)
-    const menuModel = ref<boolean>(true)
+    const menuModel = ref<boolean>(false)
     const isSearching = ref<boolean>(false)
     const searchString = ''
     const placeholder = 'buscar'

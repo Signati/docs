@@ -1,4 +1,5 @@
-import {RoutePath} from '../../types/components/routePath/RoutePath';
+import {RoutePath} from "~/types/RoutePath";
+
 
 const setTreeFlat = (children: RoutePath[], constArray: any[]) => {
     for (const child of children) {

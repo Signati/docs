@@ -10,7 +10,7 @@
       </p>
       <section>
         <h1 class="v-heading text-h3 text-sm-h3 mb-4 mx-auto" style="max-width: 568px;">
-          <a  class="text--black black--text text-decoration-none text-right text-md-left"> # Signati</a></h1>
+          <a class="text--black black--text text-decoration-none text-right text-md-left"> # Signati</a></h1>
         <p class="mx-auto" style="max-width: 568px;">
           Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XML y sellarlo sin nigun problema
           de compatibilidad de las versiones 2.0.
@@ -48,8 +48,8 @@
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
-import { defineComponent, ref } from "@nuxtjs/composition-api";
-import iread from './index.md'
+import {defineComponent, ref} from "@nuxtjs/composition-api";
+
 
 export default defineComponent({
   layout: 'landing',
@@ -63,12 +63,7 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const src = ref(iread)
-    console.log()
-    return {
-      src,
-      iread
-    }
+    return {}
   }
 })
 </script>

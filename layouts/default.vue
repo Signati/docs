@@ -6,9 +6,8 @@
       app
       fixed
     >
-
       <v-list nav dense :expand="true">
-                <span v-for="(item, i) in paths" :key="i">
+                <span v-for="(item, i) in miniVariant" :key="i">
                 <v-list-group
                   :value="true"
                   v-if="item.children.length > 0"
@@ -134,13 +133,14 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onBeforeMount, ref, useStore} from "@nuxtjs/composition-api";
+import {computed, defineComponent, onBeforeMount, onMounted, ref, useStore} from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Toolbar from "~/components/core/toolbars/toolbar.vue";
 import {mdiGithub} from '@mdi/js';
 import {RoutePath} from "~/types/RoutePath";
 import {isMobile, isTablet} from 'mobile-device-detect';
-import {useMenu} from "~/composables/useMenu";
+import {parseRoutes} from "~/composables/useMenu";
+import {menu} from "~/util/menu";
 
 export default defineComponent({
   components: {
@@ -155,8 +155,12 @@ export default defineComponent({
     const menuRoutesRight = computed(() => {
       return getters['menu/routes']
     })
-    const miniVariant = ref(false)
-    const {paths} = useMenu('php')
+    const miniVariant = ref([])
+    onMounted(async () => {
+      let a = await parseRoutes(menu, 'nodejs')
+      console.log(a)
+      miniVariant.value = a
+    })
     onBeforeMount(() => {
       if (isMobile || isTablet) {
         drawer.value = false;
@@ -170,7 +174,7 @@ export default defineComponent({
       miniVariant,
       mdiGithub,
       menuRoutesRight,
-      paths
+
     }
   }
 })

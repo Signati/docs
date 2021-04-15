@@ -1,10 +1,10 @@
 import {createTree} from "~/util/tree/CreateTree";
 import {sort} from "~/util/tree";
 import {RoutePath} from "~/types/RoutePath";
-import {computed} from "@vue/composition-api";
+import {computed} from "@nuxtjs/composition-api";
 import {menu} from "~/util/menu";
 
-const parseRoutes = async (routes: RoutePath[], lang: string) => {
+export const parseRoutes = async (routes: RoutePath[], lang: string) => {
   const data = []
   for (const route of routes) {
     if (route.throughout) {
@@ -17,19 +17,10 @@ const parseRoutes = async (routes: RoutePath[], lang: string) => {
     }
   }
 
-  return await sort({
-    items: data,
-    comparisonProperty: 'level',
-    subArrayName: 'children'
-  })
+  console.log(data)
+  const r = await createTree(data)
+  console.log(r)
+  return r
 }
 
-export function useMenu(lang: string) {
 
-  const paths = computed(() => {
-    return parseRoutes(menu, lang)
-  })
-  return {
-    paths
-  }
-}

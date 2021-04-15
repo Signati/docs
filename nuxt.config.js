@@ -7,7 +7,7 @@ export default {
     port: 8082
   },
   // router: {
-  //   base: '/es/v33'
+  //   base: '/nodejs/v33'
   // },
   head: {
     titleTemplate: '%s - docs',

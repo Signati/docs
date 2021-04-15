@@ -12,7 +12,7 @@
       <v-icon
         :key="String(clicked)"
         :color="clicked ? 'primary' :'grey'"
-        v-text="clicked ? 'mdi-check-all' : 'mdi-content-copy'"
+        v-text="clicked ? 'mdi-check-all' : 'mdi-composables-copy'"
       />
     </v-fade-transition>
   </v-btn>

@@ -1,7 +1,7 @@
 <template>
   <section>
     <h3 class="display-1 basil--text">
-      #  Estructura General CFDI 3.3
+      # Estructura General CFDI 3.3
     </h3>
     <Markup :code="code" language="typescript"></Markup>
     <br>
@@ -10,11 +10,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
+import {defineComponent, onMounted, useStore} from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
 
 export default defineComponent({
   name: "example",
+  layout: 'php',
   components: {
     Markup
   },
@@ -149,11 +150,9 @@ export default defineComponent({
   <cfdi:Complemento/>
 </cfdi:Comprobante>`
 
-    const { commit } = useStore()
+    const {commit} = useStore()
     onMounted(() => {
-      commit('menu/setRoutes', [
-
-      ])
+      commit('menu/setRoutes', [])
     })
     return {
       code,

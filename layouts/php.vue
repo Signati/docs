@@ -74,7 +74,7 @@
                 <span v-for="(right, r) in menuRoutesRight" :key="r">
                 <v-list-group
                   v-if="right.children.length > 0"
-                  active-class="active"
+                  active-class="primary"
                   group
                   :value="true"
                 >
@@ -133,7 +133,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onBeforeMount, onMounted, ref, useStore} from "@nuxtjs/composition-api";
+import {computed, defineComponent, onBeforeMount, onMounted, ref, useContext, useStore} from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Toolbar from "~/components/core/toolbars/toolbar.vue";
 import {mdiGithub} from '@mdi/js';
@@ -161,7 +161,15 @@ export default defineComponent({
       console.log(a)
       miniVariant.value = a
     })
+    const context = useContext()
+
+    // @ts-ignore
+
     onBeforeMount(() => {
+      // context.$vuetify.theme.isDark = false
+      console.log(context.$vuetify.theme.themes)
+      context.$vuetify.theme.themes.light.primary = '#FE382D'
+      context.$vuetify.theme.themes.dark.primary = '#FE382D'
       if (isMobile || isTablet) {
         drawer.value = false;
         drawerRight.value = false

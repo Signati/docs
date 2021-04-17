@@ -1,5 +1,5 @@
 <template>
-    <v-list-item active-class="active"
+    <v-list-item active-class="light"
                  :to="statePropd.item.url"
                  dense
                  nuxt

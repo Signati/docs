@@ -4,6 +4,7 @@
       v-model="drawer"
       clipped
       app
+      color="#F5F5FA"
       fixed
     >
       <v-list nav dense :expand="true">

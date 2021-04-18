@@ -3,7 +3,7 @@
     <h3 class="display-1 basil--text">
       # Estructura General CFDI 3.3
     </h3>
-    <Markup :code="code" language="typescript"></Markup>
+    <Markup :code="code" language="php"></Markup>
     <br>
     <Markup :code="xml" language="xml"></Markup>
   </section>
@@ -21,103 +21,141 @@ export default defineComponent({
   },
   setup() {
     const code = `
-    import { CFDI,
-         Comprobante,
-         Concepts,
-         Emisor,
-         Impuestos,
-         Receptor,
-         Relacionado }  from '@signati/core';
+    <?php
+
+    use Signati\\Core\\CFDI;
+    use Signati\\Core\\Tags\\Concepto;
+    use Signati\\Core\\Tags\\Emisor;
+    use Signati\\Core\\Tags\\Impuestos;
+    use Signati\\Core\\Tags\\Receptor;
+    use Signati\\Core\\Tags\\Relacionado;
+
+    $cfdi = new CFDI([
+    'Serie' => 'A',
+    'Folio' => 'A0103',
+    'Fecha' => '2018-02-02T11:36:17',
+    'FormaPago' => '01',
+    // 'NoCertificado' => '30001000000300023708',
+    'SubTotal' => '4741.38',
+    'Moneda' => 'MXN',
+    'TipoCambio' => '1',
+    'Total' => '5500.00',
+    'TipoDeComprobante' => 'I',
+    'MetodoPago' => 'PUE',
+    'LugarExpedicion' => '64000',
+    ], '3.3');
+    $relacion = new Relacionado('01');
+    $relacion->addRelacion('asdasdsad');
+    $relacion->addRelacion('dalia');
+    $cfdi->relacionados($relacion);
+
+    $emisor = new Emisor([
+        'Rfc' => "XXXXXX",
+        'Nombre' => "signait",
+        'RegimenFiscal' => "602"
+    ]);
+    $cfdi->emisor($emisor);
+
+    $receptor = new Receptor([
+        'Rfc' => "asdsad",
+        'Nombre' => "amir",
+        'ResidenciaFiscal' => "1231",
+        'NumRegIdTrib' => "1231",
+        'UsoCFDI' => "012"
+    ]);
+    $cfdi->receptor($receptor);
 
 
+    $concepto = new Concepto([
+        'ClaveProdServ' => '3243',
+        'NoIdentificacion' => '234234',
+        'Cantidad' => '1',
+        'ClaveUnidad' => 'Pieza',
+        'Unidad' => '1',
+        'Descripcion' => 'asdad',
+        'ValorUnitario' => '322332',
+        'Importe' => '00',
+        'Descuento' => '00',
+    ]);
+    //$concepto->complemento();
 
-  const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
-  const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
+    $concepto->traslado([
+        'Base' => '',
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
 
-       const comprobanteAttribute: Comprobante = {
-                 Serie: 'E',
-                 Folio: 'ACACUN-27',
-                 Fecha: '2014-07-08T12:16:50',
-                 Sello: '',
-                 FormaPago: 'Pago en una sola exhibición',
-                 NoCertificado: '',
-                 Certificado: '',
-                 condicionesDePago: 'Contado',
-                 SubTotal: '16148.04',
-                 Descuento: '645.92',
-                 Moneda: 'MXN',
-                 Total: '17207.35',
-                 TipoDeComprobante: 'I',
-                 MetodoPago: 'En efectivo',
-                 LugarExpedicion: 'México',
-             };
-             const cfd = new CFDI(comprobanteAttribute);
-  await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
+    $concepto->retencion([
+        'Base' => '',
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
+    $cfdi->concepto($concepto);
 
-  const relation = new Relacionado({ TipoRelacion: '01' });
-        relation.addRelation('');
-  await cfd.relacionados(relation);
+    $concepto2 = new Concepto([
+        'ClaveProdServ' => '3243',
+        'NoIdentificacion' => '234234',
+        'Cantidad' => '1',
+        'ClaveUnidad' => 'Pieza',
+        'Unidad' => '1',
+        'Descripcion' => 'asdad',
+        'ValorUnitario' => '322332',
+        'Importe' => '00',
+        'Descuento' => '00',
+    ]);
+    $cfdi->concepto($concepto2);
 
-  const emisor = new Emisor({
-                     Rfc: '',const cfd = new CFDI();
-                     Nombre: '',
-                     RegimenFiscal: 601
-                 });
-  await cfd.emisor(emisor);
+    $impuest = new Impuestos([
+        'TotalImpuestosRetenidos' => '',
+        'TotalImpuestosTrasladados' => '',
+    ]);
+    $impuest->traslados([
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
+    $impuest->traslados([
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
 
-  const receptor = new Receptor({
-                        Rfc: 'XAXX010101000',
-                        Nombre: 'PUBLICO EN GENERAL',
-                        UsoCFDI: 'G01'
-                    });
-  await cfd.receptor(receptor);
-  const concepto = new Concepts({
-                ClaveProdServ: '',
-                NoIdentificacion: '',
-                Cantidad: '',
-                ClaveUnidad: '',
-                Unidad: '',
-                Descripcion: '',
-                ValorUnitario: '',
-                Importe: '',
-                Descuento: '',
-            });
-         concepto.traslado({
-               Base: '',
-               Impuesto: '',
-               TipoFactor: '',
-               TasaOCuota: '',
-               Importe: '',
-         });
+    $impuest->traslados([
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
 
-         concepto.retencion({
-               Base: '',
-               Impuesto: '',
-               TipoFactor: '',
-               TasaOCuota: '',
-               Importe: '',
-         });
+    $impuest->retenciones([
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
 
-   await cfd.concepto(concepto);
+    $impuest->retenciones([
+        'Impuesto' => '',
+        'TipoFactor' => '',
+        'TasaOCuota' => '',
+        'Importe' => '',
+    ]);
+    $cfdi->impuesto($impuest);
+    $cer = join([dirname(__DIR__), '/server/certificados/LAN7008173R5.cer']);
+    $key = join([dirname(__DIR__), '/server/certificados/LAN7008173R5.key']);
+    $cfdi->certificar($cer);
 
-   const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '', TotalImpuestosTrasladados: ''});
+    $cfdi->sellar($key,'12345678a');
 
-         impuesto.traslados({
-               Impuesto: '',
-               TipoFactor: '',
-               TasaOCuota: '',
-               Importe: '',
-         });
-         impuesto.retenciones({
-                Impuesto: '',
-                TipoFactor: '',
-                TasaOCuota: '',
-                Importe: '',
-         });
-   await cfd.impuesto(impuesto);
-   await cfd.certificar(cer);
-   await cfd.sellar(key, '12345678a');
-   const xml = await cfd.getXmlCdfi();
+    header("Content-type: application/xhtml+xml");
+    echo $cfdi->getDocument();
+
    `
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -79,7 +79,7 @@
                   :value="true"
                 >
                     <template v-slot:activator>
-                        <v-list-item-icon class="m-0 mr-2">
+                        <v-list-item-icon class="m-0 mt-0 pt-1 mr-2">
                               <v-icon>{{ right.icon }}</v-icon>
                          </v-list-item-icon>
                         <v-list-item-title class="ml-0 pl-0">
@@ -137,17 +137,21 @@ import {computed, defineComponent, onBeforeMount, onMounted, ref, useContext, us
 import FirstList from "~/components/Menu/FirstList.vue";
 import Toolbar from "~/components/core/toolbars/toolbar.vue";
 import {mdiGithub} from '@mdi/js';
-import {RoutePath} from "~/types/RoutePath";
 import {isMobile, isTablet} from 'mobile-device-detect';
 import {parseRoutes} from "~/composables/useMenu";
 import {menu} from "~/util/menu";
+import {Context} from "@nuxt/types";
+import {RoutePath} from "~/types/RoutePath";
 
 export default defineComponent({
   components: {
     FirstList,
     Toolbar
   },
-  setup() {
+  asyncData(ctx: Context): Promise<object | void> | object | void {
+    console.log("amir", ctx)
+  },
+  setup(props, {root}) {
     const drawerRight = ref(true)
     const drawer = ref(true)
     const fixed = ref(false)
@@ -155,21 +159,21 @@ export default defineComponent({
     const menuRoutesRight = computed(() => {
       return getters['menu/routes']
     })
-    const miniVariant = ref([])
+    const miniVariant = ref<RoutePath[]>([])
+    const context = useContext()
     onMounted(async () => {
       let a = await parseRoutes(menu, 'php')
-      console.log(a)
       miniVariant.value = a
     })
-    const context = useContext()
 
     // @ts-ignore
-
     onBeforeMount(() => {
-      // context.$vuetify.theme.isDark = false
-      console.log(context.$vuetify.theme.themes)
-      context.$vuetify.theme.themes.light.primary = '#FE382D'
-      context.$vuetify.theme.themes.dark.primary = '#FE382D'
+      // @ts-ignore
+      root.$vuetify.theme.isDark = false
+      // @ts-ignore
+      root.$vuetify.theme.themes.light.primary = '#FE382D'
+      // @ts-ignore
+      root.$vuetify.theme.themes.dark.primary = '#FE382D'
       if (isMobile || isTablet) {
         drawer.value = false;
         drawerRight.value = false

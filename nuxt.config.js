@@ -79,7 +79,14 @@ export default {
       font: {
         family: 'DM Sans'
       }
-    }
+    },
+    theme: {
+      themes: {
+        light: {
+          primary: '#388E3C',
+        },
+      },
+    },
   },
   babel: {
     presets(env, [preset, options]) {

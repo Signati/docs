@@ -1,10 +1,7 @@
 import {createTree} from "~/util/tree/CreateTree";
-import {sort} from "~/util/tree";
 import {RoutePath} from "~/types/RoutePath";
-import {computed} from "@nuxtjs/composition-api";
-import {menu} from "~/util/menu";
 
-export const parseRoutes = async (routes: RoutePath[], langP: string) => {
+export const parseRoutes = async (routes: RoutePath[], langP: string): Promise<RoutePath[]> => {
   const data = []
   for (const route of routes) {
     if (route.throughout) {
@@ -21,11 +18,7 @@ export const parseRoutes = async (routes: RoutePath[], langP: string) => {
       }
     }
   }
-
-  console.log(data)
-  const r = await createTree(data)
-  console.log(r)
-  return r
+  return await createTree(data)
 }
 
 

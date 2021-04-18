@@ -156,7 +156,7 @@ export default defineComponent({
     const menuRoutesRight = computed(() => {
       return getters['menu/routes']
     })
-    const miniVariant = ref([])
+    const miniVariant = ref<RoutePath[]>([])
     onMounted(async () => {
       let a = await parseRoutes(menu, 'nodejs')
       console.log(a)

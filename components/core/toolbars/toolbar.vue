@@ -15,20 +15,58 @@
     <Search></Search>
     <v-spacer/>
     v3.3.10
-    <v-btn icon href="https://github.com/Signati/core" target="_blank" color="primary">
+    <v-btn icon href="https://github.com/Signati/core" target="_blank" color="black">
       <v-icon>{{ mdiGithub }}</v-icon>
     </v-btn>
+    <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          icon
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon>
+            {{ lang.icon }}
+          </v-icon>
+        </v-btn>
+      </template>
+
+      <v-list dense>
+        <v-list-item-group
+          v-model="lang"
+          color="primary"
+        >
+          <v-list-item
+            v-for="(item, index) in langs"
+            :key="index"
+            :value="item"
+            @click="select(item)"
+          >
+            <v-list-item-icon class="pt-4 pl-0" style="margin: 0px !important; margin-right: 5px !important;">
+              <v-icon :color="item.color">
+                {{ item.icon }}
+              </v-icon>
+            </v-list-item-icon>
+            <v-list-item-title :color="item.color">{{ item.label }}</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 <script lang="ts">
 import {computed, defineComponent, reactive, ref, watch} from '@vue/composition-api';
-import {mdiGithub, mdiMenu} from '@mdi/js';
+import {mdiGithub, mdiMenu, mdiLanguagePhp} from '@mdi/js';
 import Search from "~/components/Search.vue";
 
 interface PropsToolbar {
   value: boolean;
   hiddenMenu: boolean;
 }
+
+import {mdiNodejs} from '@mdi/js';
 
 const Toolbar = defineComponent<PropsToolbar>({
   components: {
@@ -44,13 +82,33 @@ const Toolbar = defineComponent<PropsToolbar>({
       default: false
     }
   },
-  setup(props: { value: boolean, hiddenMenu: boolean }, {emit}) {
+  setup(props: { value: boolean, hiddenMenu: boolean }, {emit, root}) {
     const title = 'Signati/Core'
     const clipped = ref(false)
     const open = computed(() => {
       return props.value;
     });
+    const lang = ref({
+      color: "green",
+      label: 'Node Js',
+      icon: 'mdi-nodejs',
+      path: 'nodejs'
+    })
 
+    const langs = [
+      {
+        color: "#4CAF50",
+        label: 'Node Js',
+        icon: 'mdi-nodejs',
+        path: 'nodejs'
+      },
+      {
+        color: '#FE382D',
+        label: 'PHP',
+        icon: 'mdi-language-php',
+        path: 'php'
+      }
+    ]
     const hide = computed(() => {
       return props.hiddenMenu;
     });
@@ -59,14 +117,24 @@ const Toolbar = defineComponent<PropsToolbar>({
       console.log('value emit' + !props.value);
       emit('input', !open.value);
     };
+    const select = (lng: any) => {
+      console.log(lng)
+      // @ts-ignore
+      root.$vuetify.theme.themes.light.primary = lng.color
+      // @ts-ignore
+      root.$vuetify.theme.themes.dark.primary = lng.color
+    }
     return {
       drawerTouch,
+      select,
       clipped,
       mdiGithub,
       mdiMenu,
       open,
       title,
-      hide
+      hide,
+      lang,
+      langs
     };
   },
 });

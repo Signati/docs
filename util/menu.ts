@@ -33,7 +33,7 @@ export let menu: RoutePath[] = [
     fatherID: 1,
     level: '1',
     url: '/support-for-plugins',
-    icon: '',
+    icon: 'mdi-toy-brick-outline',
     children: [],
     langs: [
       {
@@ -73,7 +73,7 @@ export let menu: RoutePath[] = [
     fatherID: 1,
     level: '1',
     url: '/getting-started/generate',
-    icon: '',
+    icon: 'mdi-certificate-outline',
     children: [],
     langs: [
       {
@@ -303,7 +303,7 @@ export let menu: RoutePath[] = [
     fatherID: 8,
     level: '1',
     url: '/sellar',
-    icon: '',
+    icon: 'mdi-xml',
     children: [],
     langs: [
       {
@@ -324,7 +324,7 @@ export let menu: RoutePath[] = [
     fatherID: null,
     level: '1',
     url: '/pdf',
-    icon: '',
+    icon: 'mdi-file-pdf',
     children: [],
     langs: [
       {

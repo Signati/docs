@@ -66,7 +66,8 @@ interface PropsToolbar {
   hiddenMenu: boolean;
 }
 
-import {mdiNodejs} from '@mdi/js';
+// @ts-ignore
+import * as Cookies from 'js-cookie'
 
 const Toolbar = defineComponent<PropsToolbar>({
   components: {
@@ -83,7 +84,7 @@ const Toolbar = defineComponent<PropsToolbar>({
     }
   },
   setup(props: { value: boolean, hiddenMenu: boolean }, {emit, root}) {
-    const title = 'Signati/Core'
+    const title = 'Signati'
     const clipped = ref(false)
     const open = computed(() => {
       return props.value;
@@ -123,6 +124,9 @@ const Toolbar = defineComponent<PropsToolbar>({
       root.$vuetify.theme.themes.light.primary = lng.color
       // @ts-ignore
       root.$vuetify.theme.themes.dark.primary = lng.color
+      Cookies.set('programming', lng.path);
+      Cookies.set('color', lng.color);
+
     }
     return {
       drawerTouch,

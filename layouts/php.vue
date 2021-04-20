@@ -168,12 +168,6 @@ export default defineComponent({
 
     // @ts-ignore
     onBeforeMount(() => {
-      // @ts-ignore
-      root.$vuetify.theme.isDark = false
-      // @ts-ignore
-      root.$vuetify.theme.themes.light.primary = '#FE382D'
-      // @ts-ignore
-      root.$vuetify.theme.themes.dark.primary = '#FE382D'
       if (isMobile || isTablet) {
         drawer.value = false;
         drawerRight.value = false

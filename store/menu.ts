@@ -22,7 +22,6 @@ export const state = () => ({
 })
 export const mutations = {
   setRoutes(state: MenuState, routePaths: RoutePath[]) {
-    console.log('dadad')
     state.routes = routePaths
   }
 }

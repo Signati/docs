@@ -21,7 +21,7 @@ export let menu: RoutePath[] = [
     fatherID: 1,
     level: '1',
     url: '/getting-started/installation',
-    icon: '',
+    icon: 'mdi-package',
     children: [],
     langs: []
   },
@@ -53,7 +53,7 @@ export let menu: RoutePath[] = [
     fatherID: 1,
     level: '1',
     url: '/getting-started/official-information',
-    icon: '',
+    icon: 'mdi-information-outline',
     children: [],
     langs: [
       {

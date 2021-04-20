@@ -134,7 +134,16 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onBeforeMount, onMounted, ref, useStore} from "@nuxtjs/composition-api";
+import {
+  computed,
+  defineComponent,
+  onBeforeMount,
+  onMounted,
+  ref,
+  useRouter,
+  useRoute,
+  useStore
+} from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Toolbar from "~/components/core/toolbars/toolbar.vue";
 import {mdiGithub} from '@mdi/js';
@@ -142,6 +151,7 @@ import {RoutePath} from "~/types/RoutePath";
 import {isMobile, isTablet} from 'mobile-device-detect';
 import {parseRoutes} from "~/composables/useMenu";
 import {menu} from "~/util/menu";
+import * as Cookies from "js-cookie";
 
 export default defineComponent({
   components: {
@@ -157,9 +167,16 @@ export default defineComponent({
       return getters['menu/routes']
     })
     const miniVariant = ref<RoutePath[]>([])
+    const router = useRouter()
+    const route = useRoute()
+    const lang = computed(() => {
+      return route.value.fullPath.split('/')[1]
+    })
     onMounted(async () => {
-      let a = await parseRoutes(menu, 'nodejs')
-      console.log(a)
+      const progaming = Cookies.get('programming') ? Cookies.get('programming') : 'nodejs'
+      console.log(progaming)
+      // @ts-ignore
+      let a = await parseRoutes(menu, progaming)
       miniVariant.value = a
     })
     onBeforeMount(() => {

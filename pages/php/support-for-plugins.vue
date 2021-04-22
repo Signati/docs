@@ -65,7 +65,6 @@ import {computed, defineComponent, onMounted, useStore} from "@nuxtjs/compositio
 
 export default defineComponent({
   name: "support-for-plugins",
-  layout: 'php',
   setup() {
     const r = computed(() => {
       return cc.map((data) => {

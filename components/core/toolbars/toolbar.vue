@@ -18,6 +18,7 @@
     <v-btn icon href="https://github.com/Signati/core" target="_blank" color="black">
       <v-icon>{{ mdiGithub }}</v-icon>
     </v-btn>
+
     <v-menu offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -28,14 +29,14 @@
           v-on="on"
         >
           <v-icon>
-            {{ lang.icon }}
+            {{ programming.icon }}
           </v-icon>
         </v-btn>
       </template>
 
       <v-list dense>
         <v-list-item-group
-          v-model="lang"
+          v-model="programming"
           color="primary"
         >
           <v-list-item
@@ -68,6 +69,9 @@ interface PropsToolbar {
 
 // @ts-ignore
 import * as Cookies from 'js-cookie'
+import {useLocalStorage} from "@vueuse/core";
+import {useTheme} from "~/composables/useTheme";
+import {useRoute, useRouter} from "@nuxtjs/composition-api";
 
 const Toolbar = defineComponent<PropsToolbar>({
   components: {
@@ -89,12 +93,9 @@ const Toolbar = defineComponent<PropsToolbar>({
     const open = computed(() => {
       return props.value;
     });
-    const lang = ref({
-      color: "green",
-      label: 'Node Js',
-      icon: 'mdi-nodejs',
-      path: 'nodejs'
-    })
+
+    const {programming, setProgramming} = useTheme()
+
 
     const langs = [
       {
@@ -113,20 +114,32 @@ const Toolbar = defineComponent<PropsToolbar>({
     const hide = computed(() => {
       return props.hiddenMenu;
     });
+    const route = useRoute()
+    const router = useRouter()
     const drawerTouch = () => {
       console.log('value ' + props.value);
       console.log('value emit' + !props.value);
       emit('input', !open.value);
     };
     const select = (lng: any) => {
-      console.log(lng)
+      // lang.value = lng
       // @ts-ignore
       root.$vuetify.theme.themes.light.primary = lng.color
       // @ts-ignore
       root.$vuetify.theme.themes.dark.primary = lng.color
-      Cookies.set('programming', lng.path);
-      Cookies.set('color', lng.color);
+      setProgramming(lng)
+      console.log(router)
+      const firsPath = route.value.fullPath.split('/')[1]
+      if (findPath(firsPath)) {
+        router.push(route.value.fullPath.replace(firsPath, lng.path))
+      } else {
 
+      }
+    }
+    const findPath = (path: string) => {
+      return langs.find((lang) => {
+        return lang.path === path
+      })
     }
     return {
       drawerTouch,
@@ -137,7 +150,7 @@ const Toolbar = defineComponent<PropsToolbar>({
       open,
       title,
       hide,
-      lang,
+      programming,
       langs
     };
   },

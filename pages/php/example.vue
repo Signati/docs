@@ -15,7 +15,6 @@ import Markup from "~/components/Markup.vue";
 
 export default defineComponent({
   name: "example",
-  layout: 'php',
   components: {
     Markup
   },

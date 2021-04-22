@@ -35,7 +35,13 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // {src: '~/plugins/vuetify.ts'},
+    {
+      src: '~/plugins/vuetify.ts',
+    },
+    {
+      src: '~/plugins/vuex-persist',
+      ssr: false
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -81,6 +87,13 @@ export default {
       font: {
         family: 'DM Sans'
       }
+    },
+    theme: {
+      themes: {
+        light: {
+          primary: '#ffffff',
+        },
+      },
     },
   },
   babel: {

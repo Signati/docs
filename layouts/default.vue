@@ -118,6 +118,7 @@
                 </span>
       </v-list>
     </v-navigation-drawer>
+
     <v-main>
       <v-container>
         <nuxt/>
@@ -142,7 +143,7 @@ import {
   ref,
   useRouter,
   useRoute,
-  useStore
+  useStore, watch
 } from "@nuxtjs/composition-api";
 import FirstList from "~/components/Menu/FirstList.vue";
 import Toolbar from "~/components/core/toolbars/toolbar.vue";
@@ -152,6 +153,7 @@ import {isMobile, isTablet} from 'mobile-device-detect';
 import {parseRoutes} from "~/composables/useMenu";
 import {menu} from "~/util/menu";
 import * as Cookies from "js-cookie";
+import {useTheme} from "~/composables/useTheme";
 
 export default defineComponent({
   components: {
@@ -169,16 +171,17 @@ export default defineComponent({
     const miniVariant = ref<RoutePath[]>([])
     const router = useRouter()
     const route = useRoute()
-    const lang = computed(() => {
-      return route.value.fullPath.split('/')[1]
-    })
-    onMounted(async () => {
-      const progaming = Cookies.get('programming') ? Cookies.get('programming') : 'nodejs'
-      console.log(progaming)
-      // @ts-ignore
-      let a = await parseRoutes(menu, progaming)
+    const {programming} = useTheme()
+    watch(() => programming.value, async () => {
+      let a = await parseRoutes(menu, programming.value.path)
       miniVariant.value = a
     })
+    onMounted(async () => {
+      console.log('default', programming)
+      let a = await parseRoutes(menu, programming.value.path)
+      miniVariant.value = a
+    })
+
     onBeforeMount(() => {
       if (isMobile || isTablet) {
         drawer.value = false;

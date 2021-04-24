@@ -11,7 +11,7 @@
     <v-fade-transition hide-on-leave>
       <v-icon
         :key="String(clicked)"
-        :color="clicked ? 'primary' :'grey'"
+        color="primary"
         v-text="clicked ? 'mdi-check-all' : 'mdi-content-copy'"
       />
     </v-fade-transition>

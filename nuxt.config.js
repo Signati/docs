@@ -7,7 +7,7 @@ export default {
     port: 8082
   },
   // router: {
-  //   base: '/es/v33'
+  //   base: '/nodejs/v33'
   // },
   head: {
     titleTemplate: '%s - docs',
@@ -34,7 +34,15 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/vuetify.ts',
+    },
+    {
+      src: '~/plugins/vuex-persist',
+      ssr: false
+    }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -45,7 +53,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/composition-api',
+    '@nuxtjs/composition-api/module',
     '~/googleanalytics/module.js'
   ],
 
@@ -79,7 +87,14 @@ export default {
       font: {
         family: 'DM Sans'
       }
-    }
+    },
+    theme: {
+      themes: {
+        light: {
+          primary: '#ffffff',
+        },
+      },
+    },
   },
   babel: {
     presets(env, [preset, options]) {

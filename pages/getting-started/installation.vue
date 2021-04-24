@@ -118,7 +118,7 @@ npm i --save @signati/core
 
 <script lang="ts">
 import {defineComponent, onMounted, ref, useContext, useRouter, useStore} from "@nuxtjs/composition-api";
-import Markup from '@/components/Markup.vue'
+import Markup from '~/components/Markup.vue'
 
 export default defineComponent({
   components: {

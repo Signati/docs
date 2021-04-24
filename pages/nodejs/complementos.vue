@@ -62,7 +62,7 @@ export default defineComponent({
           name: d.toLowerCase(),
           fatherID: 1,
           level: '1',
-          url: '/es/v33/complementos/#' + d.toLowerCase(),
+          url: '/nodejs/complementos/#' + d.toLowerCase(),
           icon: '',
           children: []
         }

@@ -4,6 +4,7 @@
       #  Estructura General CFDI 3.3
     </h3>
     <Markup :code="code" language="typescript"></Markup>
+    <br>
     <Markup :code="xml" language="xml"></Markup>
   </section>
 </template>

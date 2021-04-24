@@ -1,4 +1,4 @@
-import { defineComponent, h } from '@nuxtjs/composition-api'
+import {defineComponent, h} from '@nuxtjs/composition-api'
 import Prism from 'prismjs'
 // Imports
 import 'markdown-it-prism'
@@ -15,6 +15,8 @@ import 'prismjs/components/prism-powershell'
 import 'prismjs/components/prism-shell-session'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-markup-templating'
+import 'prismjs/components/prism-php'
 
 export default defineComponent({
   props: {
@@ -30,10 +32,9 @@ export default defineComponent({
       default: 'markup'
     }
   },
-  setup(props, { slots, attrs }) {
+  setup(props, {slots, attrs}) {
     const defaultSlot = (slots && slots.default && slots.default()) || []
     const code = props.code ? props.code : (defaultSlot && defaultSlot.length) ? defaultSlot : '';
-    console.log('primas',defaultSlot)
     const inline = props.inline
     const language = props.language
     const prismLanguage = Prism.languages[language]
@@ -54,9 +55,7 @@ export default defineComponent({
             // @ts-ignore
             innerHTML: Prism.highlight(code, prismLanguage)
           },
-          slot: {
-
-          }
+          slot: {}
         })
       }
       // @ts-ignore

@@ -3,7 +3,9 @@ export const state = () => ({
     color: "#4CAF50",
     label: 'Node Js',
     icon: 'mdi-nodejs',
-    path: 'nodejs'
+    path: 'nodejs',
+    beta: false,
+    disable: false
   }
 })
 

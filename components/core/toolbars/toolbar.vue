@@ -34,7 +34,7 @@
         </v-btn>
       </template>
 
-      <v-list dense>
+      <v-list dense rounded="lg">
         <v-list-item-group
           v-model="programming"
           color="primary"
@@ -43,14 +43,20 @@
             v-for="(item, index) in langs"
             :key="index"
             :value="item"
+            :disabled="item.disable"
             @click="select(item)"
           >
             <v-list-item-icon class="pt-4 pl-0" style="margin: 0px !important; margin-right: 5px !important;">
-              <v-icon :color="item.color">
+              <v-icon :color="item.disable ? 'gray' : item.color">
                 {{ item.icon }}
               </v-icon>
             </v-list-item-icon>
-            <v-list-item-title :color="item.color">{{ item.label }}</v-list-item-title>
+            <v-list-item-content class="ml-5">
+              <v-list-item-title :color="item.color">{{ item.label }}</v-list-item-title>
+              <v-list-item-subtitle v-if="item.beta">
+                Beta
+              </v-list-item-subtitle>
+            </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -102,13 +108,25 @@ const Toolbar = defineComponent<PropsToolbar>({
         color: "#4CAF50",
         label: 'Node Js',
         icon: 'mdi-nodejs',
-        path: 'nodejs'
+        path: 'nodejs',
+        beta: false,
+        disable: false
       },
       {
         color: '#FE382D',
         label: 'PHP',
         icon: 'mdi-language-php',
-        path: 'php'
+        path: 'php',
+        beta: true,
+        disable: false
+      },
+      {
+        color: '#0C4B33',
+        label: 'python',
+        icon: 'mdi-language-python',
+        path: 'php',
+        beta: false,
+        disable: true
       }
     ]
     const hide = computed(() => {

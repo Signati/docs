@@ -1,43 +1,21 @@
 <template>
-  <v-container>
-    <section>
-      <h2 class="display-1 basil--text">
-        <span class="primary--text"># </span>CFDI 3.3
+  <v-container class="justify-center">
+    <section v-for="(doc,i) of data" :key="i" :id="doc.function " class="justify-space-between">
+      <h2 id="retrieving-results">
+        <span class="primary--text">#</span>
+        <span style="font-size: 20px">{{ doc.function }}</span>
       </h2>
-      <section v-for="(doc,i) of data" :key="i">
-        <h2 id="retrieving-results">
-          <span class="primary--text">#</span>
-          {{ doc.function }}
-        </h2>
-        <p>
-          {{ doc.descripcion }}
-        </p>
-      </section>
-      <v-simple-table>
-        <thead>
-        <tr>
-          <th align="center">Function</th>
-          <th align="center">Type</th>
-          <th align="center">properties</th>
-          <th align="center">Enum</th>
-          <th align="center">Descripcion</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(doc,i) of data" :key="i">
-          <td>
-            <a class="app-link text-decoration-none primary--text font-weight-medium d-inline-block font-weight-bold">
-              {{ doc.function }}
-            </a>
-          </td>
-          <td>{{ doc.type }}</td>
-          <td v-html="doc.properties"></td>
-          <td>{{ doc.enum }}</td>
-          <td>{{ doc.descripcion }}</td>
-        </tr>
-        </tbody>
-      </v-simple-table>
+      <p class="pa-6 pb-0" style="font-size: 1rem; line-height: 1.8em;">
+        {{ doc.descripcion }}
+        <br>
+        <span class="primary--text" style="font-size: .9rem;" v-html="doc.type"></span>
+      </p>
+      <Markup :code="doc.properties" language="php"/>
     </section>
+    <v-row>
+
+
+    </v-row>
   </v-container>
 </template>
 
@@ -53,93 +31,149 @@ export default defineComponent({
   setup() {
     const data = [
       {
-        "function": "setAttributesXml",
-        "type": "XmlVersion",
-        "properties": "version: string;\nencoding: string;",
-        "enum": "",
-        "descripcion": "Inicializa la clase"
-      },
-      {
-        "function": "setAttributesComprobantes",
-        "type": "Comprobante",
+        "function": "CFDI",
+        "type": "<code> Signati\\Core\\CFDI<code>:",
         "properties": `
-        xmlns: XmlnsLinks;<br/>
-        schemaLocation: string[];<br/>
-        Version: string;<br/>
-        Serie: string;<br/>
-        Folio: string;<br/>
-        Fecha: string;<br/>
-        Sello: string;<br/>
-        FormaPago: string;<br/>
-        NoCertificado: string;<br/>
-        Certificado: string;<br/>
-        condicionesDePago?: string;<br/>
-        SubTotal: string;<br/>
-        Descuento: string;<br/>
-        Moneda: string;<br/>
-        Total: string;<br/>
-        TipoDeComprobante: string;<br/>
-        MetodoPago: string;<br/>
-        LugarExpedicion: string;`,
+$cfdi = new CFDI([
+  'Serie' => 'A',
+  'Folio' => 'A0103',
+  'Fecha' => '2018-02-02T11:36:17',
+  'FormaPago' => '01',
+  // 'NoCertificado' => '30001000000300023708',
+  'SubTotal' => '4741.38',
+  'Moneda' => 'MXN',
+  'TipoCambio' => '1',
+  'Total' => '5500.00',
+  'TipoDeComprobante' => 'I',
+  'MetodoPago' => 'PUE',
+  'LugarExpedicion' => '64000',
+], '3.3');
+       `,
         "enum": "",
         "descripcion": "Inicializa la clase"
       },
       {
-        "function": "relacionados",
-        "type": "Relacionado",
-        "properties": "class",
+        "function": "setAttributesXml",
+        "type": "<code> Signati\\Core\\CFDI<code>:",
+        "properties": `
+$cfdi = new CFDI([...])
+$cfdi->setAttributesXml('1.0','utf-8')
+        `,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "emisor",
-        "type": "Emisor",
-        "properties": "class",
+        "function": "Relacion",
+        "type": "Signati\\Core\\Tags\\Relacionado",
+        "properties": `
+use Signati\\Core\\CFDI;
+use Signati\\Core\\Tags\\Relacionado;
+
+$cfdi = new CFDI([...]);
+$cfdi->relacionados(...new Relacionado(...));
+
+`,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "receptor",
-        "type": "Receptor",
-        "properties": "class",
+        "function": "Emisor",
+        "type": "Signati\\Core\\Tags\\Emisor",
+        "properties": `
+use Signati\\Core\\CFDI;
+use Signati\\Core\\Tags\\Emisor;
+
+$cfdi = new CFDI([...]);
+$cfdi->emisor(...new Emisor([...]));
+`,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "concepto",
-        "type": "Concepts",
-        "properties": "class",
+        "function": "Receptor",
+        "type": "Signati\\Core\\Tags\\Receptor",
+        "properties": `
+use Signati\\Core\\CFDI;
+use Signati\\Core\\Tags\\Receptor;
+
+$cfdi = new CFDI([...]);
+$cfdi->receptor(...new Receptor([...]));
+`,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "impuesto",
-        "type": "Impuestos",
-        "properties": "class",
+        "function": "Concepto",
+        "type": "Signati\\Core\\Tags\\Concept",
+        "properties": `
+use Signati\\Core\\CFDI;
+use Signati\\Core\\Tags\\Concepto;
+
+$cfdi = new CFDI([...]);
+$cfdi->concepto(...new Concepto([...]));
+`,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "certificar",
-        "type": "",
-        "properties": "cerpath: string",
+        "function": "Impuesto",
+        "type": "Signati\\Core\\Tags\\Impuestos",
+        "properties": `
+use Signati\\Core\\CFDI;
+use Signati\\Core\\Tags\\Impuestos;
+
+$cfdi = new CFDI([...]);
+$cfdi->impuesto(...new Impuestos([...]));
+`,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "sellar",
-        "type": "",
-        "properties": "keyfile: string,\npassword: string",
+        "function": "Certificar",
+        "type": "Signati\\Core\\CFDI",
+        "properties": `
+use Signati\\Core\\CFDI;
+$cfdi = new CFDI([...]);
+$cer = join([dirname(__DIR__), '../LAN7008173R5.cer']);
+$cfdi->certificar($cer);
+    `,
         "enum": "",
-        "descripcion": ""
+        "descripcion": "Descripcion ...proximamente"
       },
       {
-        "function": "getXmlCdfi",
-        "type": "",
-        "properties": "",
+        "function": "Sellar",
+        "type": "Signati\\Core\\CFDI",
+        "properties": `
+use Signati\\Core\\CFDI;
+$cfdi = new CFDI([...]);
+$key = join([dirname(__DIR__), '/server/certificados/LAN7008173R5.key']);
+$cfdi->sellar($key,'12345678a');
+        `,
+        "enum": "",
+        "descripcion": "Descripcion ...proximamente"
+      },
+      {
+        "function": "getArray",
+        "type": "Signati\\Core\\CFDI",
+        "properties": `
+use Signati\\Core\\CFDI;
+$cfdi = new CFDI([...]);
+$cfdi->getArray();
+        `,
+        "enum": "",
+        "descripcion": "Obtiene el xml en tipo array"
+      },
+      {
+        "function": "getDocument",
+        "type": "Signati\\Core\\CFDI",
+        "properties": `
+use Signati\\Core\\CFDI;
+$cfdi = new CFDI([...]);
+$cfdi->getDocument();
+        `,
         "enum": "",
         "descripcion": "Obtiene el xml"
-      }
+      },
     ]
     const {commit} = useStore()
     onMounted(() => {

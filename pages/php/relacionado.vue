@@ -28,14 +28,18 @@ use Signati\\Core\\CFDI;
 use Signati\\Core\\Tags\\Relacionado
 $cfdi = new CFDI([...]);
 $relacion = new Relacionado('01');
-$relacion->addRelacion('asdasdsad');
-$relacion->addRelacion('dalia');
+$relacion->addRelacion('4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A');
+$relacion->addRelacion('4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A');
 $cfdi->relacionados($relacion);
     `" language="typescript">
     </Markup>
     <br>
     <Markup :code='`
 <?xml version="1.0" encoding="UTF-8"?>
+<cfdi:CfdiRelacionados TipoRelacion="01">
+  <cfdi:CfdiRelacionado UUID="4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A"/>
+  <cfdi:CfdiRelacionado UUID="4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A"/>
+</cfdi:CfdiRelacionados>
 
     `' language="xml">
     </Markup>

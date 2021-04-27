@@ -13,7 +13,7 @@
         v-model="searchString"
         v-bind="attrs"
         :background-color="(!isDark && !isFocused) ? 'grey lighten-3' : undefined"
-        :class="isSearching ? 'rounded-b-0' : ' rounded-lg'"
+        :class="[isSearching ? 'rounded-b-0' : ' rounded-lg','d-sm-none d-md-flex']"
         :flat="!isFocused && !isSearching"
         :placeholder="placeholder"
         autocomplete="off"
@@ -42,16 +42,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@nuxtjs/composition-api";
+import {defineComponent, ref} from "@nuxtjs/composition-api";
 import SearchResults from './SearchResults.vue'
 // This behavior should be easier to do with solo fields
 // TODO: Review this for v3
 export default defineComponent({
   name: 'DefaultSearch',
-  components:{
+  components: {
     SearchResults
   },
-  setup(){
+  setup() {
 
 
     const isFocused = ref<boolean>(false)
@@ -61,7 +61,7 @@ export default defineComponent({
     const placeholder = 'buscar'
     const isDark = ref<boolean>(false)
     const resetSearch = () => {
-     // menuModel.value = true
+      // menuModel.value = true
     }
     const onFocus = () => {
       console.log('focus')

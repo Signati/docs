@@ -13,7 +13,8 @@
         <th align="center">Descripcion</th>
       </tr>
       </thead>
-      <tbody><tr>
+      <tbody>
+      <tr>
         <td align="center">Construtor</td>
         <td align="center">String</td>
         <td align="center">data: string;</td>
@@ -28,15 +29,19 @@ import { CFDI, Relacionado } from '@signati/core';
 const cfd = new CFDI();
 
 const relation = new Relacionado({ TipoRelacion: '01' });
-      relation.addRelation('asdasd-3234-asdasd-2332-asdas');
-      relation.addRelation('asdasd-3234-asdasd-2332-asdas');
-
+relation.addRelation('4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A');
+relation.addRelation('4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A');
 await cfd.relacionados(relation);
+
     `" language="typescript">
     </Markup>
     <br>
     <Markup :code='`
 <?xml version="1.0" encoding="UTF-8"?>
+<cfdi:CfdiRelacionados TipoRelacion="01">
+  <cfdi:CfdiRelacionado UUID="4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A"/>
+  <cfdi:CfdiRelacionado UUID="4A1B43E2-1183-4AD4-A3DE-C2DA787AE56A"/>
+</cfdi:CfdiRelacionados>
 
     `' language="xml">
     </Markup>
@@ -44,7 +49,7 @@ await cfd.relacionados(relation);
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
+import {defineComponent, onMounted, useStore} from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
 
 export default defineComponent({
@@ -52,11 +57,9 @@ export default defineComponent({
     Markup
   },
   setup() {
-    const { commit } = useStore()
+    const {commit} = useStore()
     onMounted(() => {
-      commit('menu/setRoutes', [
-
-      ])
+      commit('menu/setRoutes', [])
     })
     return {}
   }

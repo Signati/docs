@@ -204,7 +204,7 @@ export default defineComponent({
           name: 'conceptos',
           fatherID: 1,
           level: '1',
-          url: '/es/v33/conceptos/#concepts',
+          url: '/nodejs/conceptos/#concepts',
           icon: '',
           children: []
         },
@@ -214,7 +214,7 @@ export default defineComponent({
           name: 'IEDU',
           fatherID: 1,
           level: '1',
-          url: '/es/v33/conceptos/#iedu',
+          url: '/nodejs/conceptos/#iedu',
           icon: '',
           children: []
         }])

@@ -53,7 +53,7 @@
                   <div class="title">OpenSSL</div>
                   Instalar
                   <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank">
-                  https://slproweb.com/products/Win32OpenSSL.html
+                    https://slproweb.com/products/Win32OpenSSL.html
                   </a>
                   <v-alert
                     outlined
@@ -76,7 +76,9 @@
                     http://saxon.sourceforge.net/#F10HE
                   </a>
                   <br>
-                  <a href="https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Dotnet/SaxonHE10-3N-setup.exe/download" target="_blank">
+                  <a
+                    href="https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Dotnet/SaxonHE10-3N-setup.exe/download"
+                    target="_blank">
                     Download for .NET (10.3 Mbytes)
                   </a>
                   <br>
@@ -86,8 +88,8 @@
                     text
                   >
 
-                  Agregar la ruta del bin de Saxon (ej: C:\Program Files\Saxonica\SaxonHE10.3N\bin) a la variable del
-                  sistema PATH como se muestra en la imagen:
+                    Agregar la ruta del bin de Saxon (ej: C:\Program Files\Saxonica\SaxonHE10.3N\bin) a la variable del
+                    sistema PATH como se muestra en la imagen:
                   </v-alert>
                   <v-img src="/env.png"></v-img>
                 </section>
@@ -99,18 +101,31 @@
     </v-col>
     <v-col cols="12">
       <section id="Installation">
-      <v-card
-        color="basil"
-        flat
-      >
-        <v-card-text>
-          <v-sheet class="mb-4 mt-4">
-            <Markup title="Installation" language="bash" code="
+        <v-card
+          color="basil"
+          flat
+        >
+          <v-card-text>
+            <v-sheet class="mb-4 mt-4">
+              <Markup title="Installation Node JS" language="bash" code="
 npm i --save @signati/core
 "></Markup>
-          </v-sheet>
-        </v-card-text>
-      </v-card>
+            </v-sheet>
+          </v-card-text>
+        </v-card>
+
+        <v-card
+          color="basil"
+          flat
+        >
+          <v-card-text>
+            <v-sheet class="mb-4 mt-4">
+              <Markup title="Installation PHP" language="bash" code="
+composer require signati/core
+"></Markup>
+            </v-sheet>
+          </v-card-text>
+        </v-card>
       </section>
     </v-col>
   </v-row>

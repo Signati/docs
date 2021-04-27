@@ -249,7 +249,7 @@ export let menu: RoutePath[] = [
       },
       {
         name: 'php',
-        view: false
+        view: true
       }
     ]
   },
@@ -270,7 +270,7 @@ export let menu: RoutePath[] = [
       },
       {
         name: 'php',
-        view: false
+        view: true
       }
     ]
   },

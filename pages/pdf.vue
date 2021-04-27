@@ -45,7 +45,7 @@
                 >
                   <div style="display: block">
                   <p class="display-1">
-                    $14.99
+                    $0.80 MX
                   </p>
                   <p>
                     próximamente

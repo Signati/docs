@@ -12,7 +12,7 @@
       <v-icon
         :key="String(clicked)"
         color="primary"
-        v-text="clicked ? 'mdi-check-all' : 'mdi-content-copy'"
+        v-text="clicked ? mdiCheckAll : mdiContentCopy"
       />
     </v-fade-transition>
   </v-btn>
@@ -20,8 +20,9 @@
 
 <script>
 // Utilities
-import { wait } from '@/util/helpers'
-import { IN_BROWSER } from '@/util/globals'
+import {wait} from '@/util/helpers'
+import {IN_BROWSER} from '@/util/globals'
+import {mdiCheckAll, mdiContentCopy} from "@mdi/js";
 
 export default {
   name: 'AppCopyBtn',
@@ -36,28 +37,30 @@ export default {
   data: () => ({
     clicked: false,
     wait: 2000,
+    mdiCheckAll,
+    mdiContentCopy
   }),
 
   methods: {
     async copy() {
       if (!IN_BROWSER) return
 
-        const el = this.target()
+      const el = this.target()
 
-        el.setAttribute('contenteditable', 'true')
-        el.focus()
+      el.setAttribute('contenteditable', 'true')
+      el.focus()
 
-        document.execCommand('selectAll', false, null)
-        document.execCommand('copy')
+      document.execCommand('selectAll', false, null)
+      document.execCommand('copy')
 
-        el.removeAttribute('contenteditable')
+      el.removeAttribute('contenteditable')
 
-        this.clicked = true
+      this.clicked = true
 
-        await wait(this.wait)
+      await wait(this.wait)
 
-        this.clicked = false
-      },
+      this.clicked = false
     },
-  }
+  },
+}
 </script>

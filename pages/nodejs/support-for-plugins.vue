@@ -15,9 +15,9 @@
           >
             <v-list-item-icon class="mr-2">
               <v-icon class="mr-2" :color="item.support ? 'blue':''">
-                {{ item.support ? 'mdi-check-box-outline' : 'mdi-checkbox-blank-outline' }}
+                {{ item.support ? mdiCheckBoxOutline: mdiCheckboxBlankOutline }}
               </v-icon>
-              <v-icon v-text="item.support ? item.icon : 'mdi-close-outline'"
+              <v-icon v-text="item.support ? mdiCheckAll : mdiCloseOutline"
                       :color="item.support ? item.colorIcon: 'red'"></v-icon>
             </v-list-item-icon>
 
@@ -44,7 +44,8 @@
           >
             <v-list-item-icon class="mr-2">
               <v-icon class="mr-2" :color="item.support ? 'blue':''">
-                {{ item.support ? 'mdi-check-box-outline' : 'mdi-checkbox-blank-outline' }}
+                {{ item.support ? mdiCheckBoxOutline: mdiCheckboxBlankOutline }}
+
               </v-icon>
               <v-icon v-text="item.support ? item.icon : 'mdi-close-outline'"
                       :color="item.support ? item.colorIcon: 'red'"></v-icon>
@@ -62,6 +63,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
+import {mdiCheckAll, mdiCheckboxBlankOutline, mdiCheckBoxOutline, mdiCloseOutline} from "@mdi/js";
 
 export default defineComponent({
   name: "support-for-plugins",
@@ -335,6 +337,10 @@ export default defineComponent({
     })
     return {
       complements,
+      mdiCheckAll,
+      mdiCloseOutline,
+      mdiCheckBoxOutline,
+      mdiCheckboxBlankOutline,
       cc
     }
   }

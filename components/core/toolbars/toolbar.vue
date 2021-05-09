@@ -29,7 +29,7 @@
           v-on="on"
         >
           <v-icon>
-            {{ programming.icon }}
+            {{ findIcon(programming.icon) }}
           </v-icon>
         </v-btn>
       </template>
@@ -48,7 +48,7 @@
           >
             <v-list-item-icon class="pt-4 pl-0" style="margin: 0px !important; margin-right: 5px !important;">
               <v-icon :color="item.disable ? 'gray' : item.color">
-                {{ item.icon }}
+                {{ findIcon(item.icon) }}
               </v-icon>
             </v-list-item-icon>
             <v-list-item-content class="ml-5">
@@ -65,7 +65,7 @@
 </template>
 <script lang="ts">
 import {computed, defineComponent, reactive, ref, watch} from '@vue/composition-api';
-import {mdiGithub, mdiMenu, mdiLanguagePhp} from '@mdi/js';
+import {mdiGithub, mdiMenu, mdiLanguagePhp, mdiNodejs, mdiLanguagePython} from '@mdi/js';
 import Search from "~/components/Search.vue";
 
 interface PropsToolbar {
@@ -102,6 +102,16 @@ const Toolbar = defineComponent<PropsToolbar>({
 
     const {programming, setProgramming} = useTheme()
 
+    const findIcon = (icon: string) => {
+      switch (icon) {
+        case 'mdi-nodejs':
+          return mdiNodejs
+        case 'mdi-language-php':
+          return mdiLanguagePhp
+        case 'mdi-language-python':
+          return mdiLanguagePython
+      }
+    }
 
     const langs = [
       {
@@ -169,7 +179,8 @@ const Toolbar = defineComponent<PropsToolbar>({
       title,
       hide,
       programming,
-      langs
+      langs,
+      findIcon
     };
   },
 });

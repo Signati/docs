@@ -22,9 +22,20 @@
 <script lang="ts">
 import {defineComponent, onMounted, useStore} from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
+import {genAppMetaInfo} from "~/util/metadata";
 
 export default defineComponent({
   name: "example",
+  head: () => {
+    return {
+      ...genAppMetaInfo({
+        title: "PHP - CFDI 3.3",
+        description: 'Genera un CFDI 3.3 con clases',
+        keywords: "signati,php ,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
+        url: 'https://docs.signati.app/php/cfdi'
+      }),
+    }
+  },
   components: {
     Markup
   },

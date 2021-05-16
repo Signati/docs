@@ -12,9 +12,21 @@
 <script lang="ts">
 import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
+import {genAppMetaInfo} from "~/util/metadata";
 
 export default defineComponent({
   name: "example",
+  head: () => {
+    return {
+      ...genAppMetaInfo({
+        title: "EJEMPLO - Node JS CFDI 3.3",
+        description: 'Ejemplo de la creacion de un CDFI 3.3',
+        keywords: "signati,php ,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
+        url: 'https://docs.signati.app/nodejs/example'
+      }),
+    }
+  },
+
   components: {
     Markup
   },

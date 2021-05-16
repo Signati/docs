@@ -17,13 +17,13 @@
       <tr v-for="(doc,i) of data" :key="i">
         <td>
           <a class="app-link text-decoration-none primary--text font-weight-medium d-inline-block font-weight-bold">
-            {{doc.function}}
+            {{ doc.function }}
           </a>
-          </td>
-        <td >{{doc.type}}</td>
+        </td>
+        <td>{{ doc.type }}</td>
         <td v-html="doc.properties"></td>
-        <td >{{doc.enum}}</td>
-        <td >{{doc.descripcion}}</td>
+        <td>{{ doc.enum }}</td>
+        <td>{{ doc.descripcion }}</td>
       </tr>
       </tbody>
     </v-simple-table>
@@ -31,11 +31,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, useStore } from "@nuxtjs/composition-api";
+import {defineComponent, onMounted, useStore} from "@nuxtjs/composition-api";
 import Markup from "~/components/Markup.vue";
+import {genAppMetaInfo} from "~/util/metadata";
 
 export default defineComponent({
   name: "example",
+  head: () => {
+    return {
+      ...genAppMetaInfo({
+        title: "NODE JS - CFDI 3.3",
+        description: 'Genera un CFDI 3.3 con clases',
+        keywords: "signati,php ,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
+        url: 'https://docs.signati.app/nodejs/cfdi'
+      }),
+    }
+  },
   components: {
     Markup
   },
@@ -130,11 +141,9 @@ export default defineComponent({
         "descripcion": "Obtiene el xml"
       }
     ]
-    const { commit } = useStore()
+    const {commit} = useStore()
     onMounted(() => {
-      commit('menu/setRoutes', [
-
-      ])
+      commit('menu/setRoutes', [])
     })
     return {
       data

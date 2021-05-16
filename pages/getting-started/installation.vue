@@ -140,12 +140,12 @@ import {useBrowserLocation} from '@vueuse/core'
 import {computed} from "@vue/composition-api";
 
 export default defineComponent({
-  head() {
+  head: () => {
     return {
       ...genAppMetaInfo({
         title: "Instalacion",
-        description: 'Get started with Vue and Vuetify in no time. Support for Vue CLI, Webpack, Nuxt and more.',
-        keywords: "cfdi,sat, cfdi33,docs,pdf,3.3, xml, node js, genera un CFDI a partir de clases, signati, signati.js, module framework",
+        description: 'Comienza instalando los requerimientos Windows, Linux y Mac',
+        keywords: "signati,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
         url: 'https://docs.signati.app/getting-started/installation'
       }),
     }

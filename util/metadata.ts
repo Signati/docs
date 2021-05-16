@@ -42,7 +42,6 @@ export function genLink() {
 }
 
 export function genOpenGraphMetaInfo(args: Metadata) {
-  console.log(args.url)
   return parseMeta('og', {
     description: args.description,
     image: 'https://docs.signati.app/logo.png',
@@ -106,16 +105,18 @@ export function genMetaInfo(title: string, description: string, keywords: string
       {vmid: 'keywords', name: 'keywords', content: keywords},
       // ...genFacebookMetaInfo(options),
       ...genOpenGraphMetaInfo(options),
-      ...genTwitterMetaInfo(),
+      ...genTwitterMetaInfo(options),
     ],
     title,
   }
 }
 
-export function genTwitterMetaInfo() {
+export function genTwitterMetaInfo(args: Metadata) {
   return parseMeta('twitter', {
     card: 'https://docs.signati.app/logo.png',
     domain: 'https://docs.signati.app/',
+    title: args.title,
     site: 'Signati',
+    image: 'https://docs.signati.app/logo.png'
   })
 }

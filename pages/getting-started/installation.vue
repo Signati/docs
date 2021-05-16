@@ -3,7 +3,7 @@
     <v-col cols="12">
 
       <h3 class="display-1 basil--text">
-        # Installation
+        # Instalacion
       </h3>
       <v-tabs
         v-model="tab"
@@ -134,8 +134,28 @@ composer require signati/core
 <script lang="ts">
 import {defineComponent, onMounted, ref, useContext, useRouter, useStore} from "@nuxtjs/composition-api";
 import Markup from '~/components/Markup.vue'
+import {genAppMetaInfo} from "~/util/metadata";
+import metadata from "~/data/metadata.json";
+import {useBrowserLocation} from '@vueuse/core'
 
 export default defineComponent({
+  head() {
+    console.log(this.url)
+    return {
+      ...genAppMetaInfo({
+        title: "Instalacion",
+        description: 'Get started with Vue and Vuetify in no time. Support for Vue CLI, Webpack, Nuxt and more.',
+        keywords: "cfdi,sat, cfdi33,docs,pdf,3.3, xml, node js, genera un CFDI a partir de clases, signati, signati.js, module framework",
+        url: this.url as string
+      }),
+    }
+  },
+  asyncData({req}) {
+    return {
+      // @ts-ignore
+      url: req.headers.host + req.url
+    }
+  },
   components: {
     Markup
   },

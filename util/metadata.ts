@@ -1,4 +1,4 @@
-import { MetaInfo } from "vue-meta";
+import {MetaInfo} from "vue-meta";
 
 export function genAppMetaInfo(defaults: Metadata) {
   // @ts-ignore
@@ -10,7 +10,7 @@ export function genAppMetaInfo(defaults: Metadata) {
 }
 
 export function genFacebookMetaInfo(args: string) {
-  return parseMeta('fb', { app_id: '' })
+  return parseMeta('fb', {app_id: ''})
 }
 
 export function genLink() {
@@ -22,8 +22,8 @@ export function genLink() {
     'https://www.google-analytics.com/',
   ]
   const link = [
-    { rel: 'shortcut icon', href: '/favicon.ico' },
-   // { rel: 'manifest', href: '/manifest.json' },
+    {rel: 'shortcut icon', href: '/favicon.ico'},
+    // { rel: 'manifest', href: '/manifest.json' },
     {
       rel: 'search',
       type: 'application/opensearchdescription+xml',
@@ -34,7 +34,7 @@ export function genLink() {
 
   for (const rel of rels) {
     for (const href of hrefs) {
-      link.push({ rel, href })
+      link.push({rel, href})
     }
   }
 
@@ -42,12 +42,14 @@ export function genLink() {
 }
 
 export function genOpenGraphMetaInfo(args: Metadata) {
+  console.log(args.url)
   return parseMeta('og', {
     description: args.description,
-    image:'https://docs.signati.app/logo.png',
+    image: 'https://docs.signati.app/logo.png',
     site_name: 'Signati',
     title: args.title,
     type: 'website',
+    url: args.url
   })
 }
 
@@ -74,8 +76,8 @@ export function parseMeta(prefix: string, metadata: Metadata) {
 
 export function genMeta() {
   return [
-    { charset: 'utf-8' },
-    { name: 'mobile-web-app-capable', content: 'yes' },
+    {charset: 'utf-8'},
+    {name: 'mobile-web-app-capable', content: 'yes'},
     {
       name: 'viewport',
       content: 'width=device-width, initial-scale=1, maximum-scale=5, minimal-ui',
@@ -83,7 +85,7 @@ export function genMeta() {
   ]
 }
 
-export function genMetaInfo(title: string, description: string, keywords: string): MetaInfo {
+export function genMetaInfo(title: string, description: string, keywords: string, url: string): MetaInfo {
   const length = description.length
 
   description = length <= 117
@@ -94,13 +96,14 @@ export function genMetaInfo(title: string, description: string, keywords: string
     description,
     keywords,
     title,
+    url
   }
 
   return {
     link: [],
     meta: [
-      { vmid: 'description', name: 'description', content: description },
-      { vmid: 'keywords', name: 'keywords', content: keywords },
+      {vmid: 'description', name: 'description', content: description},
+      {vmid: 'keywords', name: 'keywords', content: keywords},
       // ...genFacebookMetaInfo(options),
       ...genOpenGraphMetaInfo(options),
       ...genTwitterMetaInfo(),

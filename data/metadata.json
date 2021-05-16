@@ -1,5 +1,6 @@
 {
   "title": "Signati — Library to Generate the XML CDFI",
   "description": "Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0.",
-  "keywords": "cfdi,sat, cfdi33,docs,pdf,3.3, xml, node js, genera un CFDI a partir de clases, signati, signati.js, module framework"
+  "keywords": "cfdi,sat, cfdi33,docs,pdf,3.3, xml, node js, genera un CFDI a partir de clases, signati, signati.js, module framework",
+  "url": "https://docs.signati.app"
 }

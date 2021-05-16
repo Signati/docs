@@ -51,6 +51,8 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
 import {defineComponent, ref} from "@nuxtjs/composition-api";
+import { useNetwork } from '@vueuse/core'
+import {reactive} from "@vue/composition-api";
 
 
 export default defineComponent({
@@ -65,7 +67,11 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    return {}
+    const network = reactive(useNetwork())
+
+    return {
+      network
+    }
   }
 })
 </script>

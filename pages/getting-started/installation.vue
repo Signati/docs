@@ -137,30 +137,23 @@ import Markup from '~/components/Markup.vue'
 import {genAppMetaInfo} from "~/util/metadata";
 import metadata from "~/data/metadata.json";
 import {useBrowserLocation} from '@vueuse/core'
+import {computed} from "@vue/composition-api";
 
 export default defineComponent({
   head() {
-    console.log(this.url)
     return {
       ...genAppMetaInfo({
         title: "Instalacion",
         description: 'Get started with Vue and Vuetify in no time. Support for Vue CLI, Webpack, Nuxt and more.',
         keywords: "cfdi,sat, cfdi33,docs,pdf,3.3, xml, node js, genera un CFDI a partir de clases, signati, signati.js, module framework",
-        url: this.url as string
+        url: 'https://docs.signati.app/getting-started/installation'
       }),
-    }
-  },
-  asyncData({req}) {
-    return {
-      // @ts-ignore
-      url: req.headers.host + req.url
     }
   },
   components: {
     Markup
   },
   setup() {
-
     const tab = ref(null)
     const listHead = [
       {

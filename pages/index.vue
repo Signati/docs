@@ -30,6 +30,9 @@
             <v-col class="col-auto">
               <v-btn href="https://github.com/Signati/core" large dark
                      class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+                <v-icon class="mr-2">
+                  {{mdiGithub}}
+                </v-icon>
                 GITHUB
               </v-btn>
             </v-col>
@@ -39,8 +42,32 @@
       </section>
       <section>
         <h2 class="v-heading text-h3 text-sm-h3 mb-4 mx-auto" style="max-width: 568px;">
-          Project Sponsors
+          soporte
         </h2>
+        <v-row justify="center">
+          <v-col class="col-auto">
+            <v-btn large
+                   href="https://docs.signati.app/nodejs/cfdi"
+                   color="#4CAF50"
+                   dark
+                   class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+              <v-icon class="mr-2">
+                mdi-nodejs
+              </v-icon>
+              Node Js
+            </v-btn>
+          </v-col>
+          <v-col class="col-auto">
+            <v-btn href="https://docs.signati.app/php/cfdi" large dark
+                   color="#FE382D"
+                   class="v-btn v-btn--has-bg theme--dark v-size--x-large">
+              <v-icon class="mr-2">
+                mdi-language-php
+              </v-icon>
+              PHP
+            </v-btn>
+          </v-col>
+        </v-row>
       </section>
     </v-col>
   </v-row>
@@ -51,8 +78,9 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
 import {defineComponent, ref} from "@nuxtjs/composition-api";
-import { useNetwork } from '@vueuse/core'
+import {useNetwork} from '@vueuse/core'
 import {reactive} from "@vue/composition-api";
+import {mdiGithub} from "@mdi/js";
 
 
 export default defineComponent({
@@ -70,7 +98,8 @@ export default defineComponent({
     const network = reactive(useNetwork())
 
     return {
-      network
+      network,
+      mdiGithub
     }
   }
 })

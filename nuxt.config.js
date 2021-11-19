@@ -30,9 +30,8 @@ export default {
     ],
     script: [
       {
-        hid: 'adsense',
         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-        defer: true,
+        async: true,
         'data-ad-client': 'ca-pub-3148933927224946',
         crossOrigin: 'anonymous',
       },

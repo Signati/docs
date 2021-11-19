@@ -28,7 +28,7 @@ export default {
         href: '/favicon.ico'
       }
     ],
-    scripts: [
+    script: [
       {
         hid: 'adsense',
         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',

@@ -16,6 +16,7 @@
     "@nuxt/typescript-runtime": "^2.1.0",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/composition-api": "^0.23.2",
+    "@nuxtjs/google-adsense": "^1.4.0",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@types/cookie": "^0.4.0",

@@ -5,7 +5,7 @@ export default (ctx) => {
 
     Vue.use(VueGtag, {
       config: {
-        id: 'UA-212994312-1' // 'G-L96E2TZNTG'
+        id: 'G-L96E2TZNTG'
       },
       pageTrackerScreenviewEnabled: true,
       enabled: true

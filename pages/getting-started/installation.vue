@@ -5,6 +5,12 @@
       <h3 class="display-1 basil--text">
         # Instalacion
       </h3>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3148933927224946"
+           data-ad-slot="8309353449"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
       <v-tabs
         v-model="tab"
         background-color="transparent"

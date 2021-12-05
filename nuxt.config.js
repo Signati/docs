@@ -10,6 +10,7 @@ export default {
   //   base: '/nodejs/v33'
   // },
   head: {
+    __dangerouslyDisableSanitizers: ['script'],
     titleTemplate: '%s - docs',
     title: 'docs',
     meta: [
@@ -35,6 +36,10 @@ export default {
         'data-ad-client': 'ca-pub-3148933927224946',
         crossOrigin: 'anonymous',
       },
+      {
+        innerHTML: `  (adsbygoogle = window.adsbygoogle || []).push({});`,
+        type: 'text/javascript',
+      }
     ]
   },
 

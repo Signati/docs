@@ -46,8 +46,19 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 // import Markup from "~/components/Markup.vue";
 import { defineComponent, onMounted, ref, useStore } from "@nuxtjs/composition-api";
+import { genAppMetaInfo } from '~/util/metadata';
 
 export default defineComponent({
+  head: () => {
+    return {
+      ...genAppMetaInfo({
+        title: "Node Js CFDI 3.3 & 4.0",
+        description: 'Comienza instalando los requerimientos Windows, Linux y Mac',
+        keywords: "signati,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
+        url: 'https://docs.signati.app/getting-started/installation'
+      }),
+    }
+  },
   components: {
     Logo,
     VuetifyLogo,

@@ -191,6 +191,10 @@ export default defineComponent({
             step: 'JDK',
             languaje: 'bash',
             data: `
+Manjaro Install OpenJDK 14
+sudo pacman -S jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src
+
+Ubuntu
 sudo apt install default-jre
 sudo apt install default-jdk
       `

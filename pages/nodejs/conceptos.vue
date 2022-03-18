@@ -59,30 +59,50 @@
 
     const cfd = new CFDI();
     const concepto = new Concepts({
-      ClaveProdServ: '',
-      NoIdentificacion: '',
-      Cantidad: '',
-      ClaveUnidad: '',
-      Unidad: '',
-      Descripcion: '',
-      ValorUnitario: '',
-      Importe: '',
-      Descuento: '',
-    });
-    concepto.traslado({
-      Base: '369.83',
-      Impuesto: '002',
-      TipoFactor: 'Tasa',
-      TasaOCuota: '0.16',
-      Importe: '59.17',
-    });
-    concepto.retencion({
-      Base: '369.83',
-      Impuesto: '002',
-      TipoFactor: 'Tasa',
-      TasaOCuota: '0.16',
-      Importe: '59.17',
-    });
+                ClaveProdServ: '001',
+                NoIdentificacion: '1212',
+                Cantidad: '2',
+                ClaveUnidad: 'pieza',
+                Unidad: 'Pieza',
+                Descripcion: 'audifonos',
+                ValorUnitario: '1000',
+                Importe: '2000',
+                Descuento: '00.0',
+                ObjetoImp: '01'
+            });
+            concepto.predial('000121231')
+            concepto.aduana('21  47  3807  8003832')
+            concepto.parte({
+                ClaveProdServ: '51241200',
+                NoIdentificacion: 'IM020',
+                Cantidad: 1,
+                Unidad: 'PIEZA',
+                Descripcion: '',
+                ValorUnitario: '172.50',
+                Importe: '172.50'
+            })
+            concepto.traslado({
+                Base: '369.83',
+                Impuesto: '002',
+                TipoFactor: 'Tasa',
+                TasaOCuota: '0.16',
+                Importe: '59.17',
+            });
+            concepto.traslado({
+                Base: '369.8aaaa3',
+                Impuesto: '002',
+                TipoFactor: 'Tasa',
+                TasaOCuota: '0.16',
+                Importe: '59.17',
+            });
+
+            concepto.retencion({
+                Base: '369.83',
+                Impuesto: '002',
+                TipoFactor: 'Tasa',
+                TasaOCuota: '0.16',
+                Importe: '59.17',
+            });
 
     await cfd.concepto(concepto);
     `"

@@ -44,13 +44,6 @@
         <h2 class="v-heading text-h3 text-sm-h3 mb-4 mx-auto" style="max-width: 568px;">
           soporte
         </h2>
-        <!-- prueba -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3148933927224946"
-             data-ad-slot="8309353449"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
         <v-row justify="center">
           <v-col class="col-auto">
             <v-btn large

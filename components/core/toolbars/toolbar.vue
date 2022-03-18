@@ -14,7 +14,7 @@
     <v-spacer/>
     <Search></Search>
     <v-spacer/>
-    v3.3.10
+    v{{vrs}}
     <v-btn icon href="https://github.com/Signati/core" target="_blank" color="black">
       <v-icon>{{ mdiGithub }}</v-icon>
     </v-btn>
@@ -64,7 +64,7 @@
   </v-app-bar>
 </template>
 <script lang="ts">
-import {computed, defineComponent, reactive, ref, watch} from '@vue/composition-api';
+import {computed, defineComponent, onMounted, reactive, ref, watch} from '@vue/composition-api';
 import {mdiGithub, mdiMenu, mdiLanguagePhp, mdiNodejs, mdiLanguagePython} from '@mdi/js';
 import Search from "~/components/Search.vue";
 
@@ -99,6 +99,7 @@ const Toolbar = defineComponent<PropsToolbar>({
     const open = computed(() => {
       return props.value;
     });
+    const vrs= ref("")
 
     const {programming, setProgramming} = useTheme()
 
@@ -139,6 +140,14 @@ const Toolbar = defineComponent<PropsToolbar>({
         disable: true
       }
     ]
+
+    const getVersion = async () => {
+
+      const dat  = await fetch('https://raw.githubusercontent.com/Signati/core/master/package.json')
+                    .then(response => response.json())
+                    console.log("data", dat)
+                    vrs.value = dat.version
+    }
     const hide = computed(() => {
       return props.hiddenMenu;
     });
@@ -164,6 +173,9 @@ const Toolbar = defineComponent<PropsToolbar>({
 
       }
     }
+    onMounted(()=>{
+      getVersion()
+    })
     const findPath = (path: string) => {
       return langs.find((lang) => {
         return lang.path === path
@@ -180,7 +192,8 @@ const Toolbar = defineComponent<PropsToolbar>({
       hide,
       programming,
       langs,
-      findIcon
+      findIcon,
+      vrs
     };
   },
 });

@@ -1,4 +1,4 @@
-import {RoutePath} from "~/types/RoutePath";
+import { RoutePath } from "~/types/RoutePath";
 
 export let menu: RoutePath[] = [
   {
@@ -148,27 +148,27 @@ export let menu: RoutePath[] = [
       }
     ]
   },
-  {
-    id: 9,
-    isActive: 1,
-    throughout: false,
-    name: 'CFDI',
-    fatherID: 8,
-    level: '1',
-    url: '/cfdi',
-    icon: '',
-    children: [],
-    langs: [
-      {
-        name: 'nodejs',
-        view: true
-      },
-      {
-        name: 'php',
-        view: true
-      }
-    ]
-  },
+  // {
+  //   id: 9,
+  //   isActive: 1,
+  //   throughout: false,
+  //   name: 'CFDI',
+  //   fatherID: 8,
+  //   level: '1',
+  //   url: '/cfdi',
+  //   icon: '',
+  //   children: [],
+  //   langs: [
+  //     {
+  //       name: 'nodejs',
+  //       view: true
+  //     },
+  //     {
+  //       name: 'php',
+  //       view: true
+  //     }
+  //   ]
+  // },
   {
     id: 9,
     isActive: 1,

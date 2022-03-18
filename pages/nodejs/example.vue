@@ -40,33 +40,44 @@ export default defineComponent({
          Receptor,
          Relacionado }  from '@signati/core';
 
-
-
   const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
   const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
+  const styleSheet = '4.0/cadenaoriginal.xslt';
 
-       const comprobanteAttribute: Comprobante = {
-                 Serie: 'E',
-                 Folio: 'ACACUN-27',
-                 Fecha: '2014-07-08T12:16:50',
-                 Sello: '',
-                 FormaPago: 'Pago en una sola exhibición',
-                 NoCertificado: '',
-                 Certificado: '',
-                 condicionesDePago: 'Contado',
-                 SubTotal: '16148.04',
-                 Descuento: '645.92',
-                 Moneda: 'MXN',
-                 Total: '17207.35',
-                 TipoDeComprobante: 'I',
-                 MetodoPago: 'En efectivo',
-                 LugarExpedicion: 'México',
-             };
-             const cfd = new CFDI(comprobanteAttribute);
+  const comprobanteAttribute: Comprobante = {
+    // xmlns: {
+    //     xsi: 'http://www.w3.org/2001/XMLSchema-instance',
+    //     cfdi: 'http://www.sat.gob.mx/cfd/3',
+    // },
+    // schemaLocation: [
+    //     'http://www.sat.gob.mx/cfd/3',
+    //     'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+    // ],
+    Serie: 'E',
+    Folio: 'ACACUN-27',
+    Fecha: '2014-07-08T12:16:50',
+    Sello: '',
+    FormaPago: '01',
+    NoCertificado: '',
+    Certificado: '',
+    condicionesDePago: 'Contado',
+    SubTotal: '16148.04',
+    Descuento: '645.92',
+    Moneda: 'MXN',
+    Total: '17207.35',
+    TipoDeComprobante: 'I',
+    MetodoPago: 'PUE',
+    LugarExpedicion: 'México',
+    Exportacion: '01'
+};
+  const cfd = new CFDI(comprobanteAttribute, {
+      xslt: styleSheet,
+      debug: false
+  });
   await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
 
   const relation = new Relacionado({ TipoRelacion: '01' });
-        relation.addRelation('');
+  relation.addRelation('');
   await cfd.relacionados(relation);
 
   const emisor = new Emisor({
@@ -92,6 +103,7 @@ export default defineComponent({
                 ValorUnitario: '',
                 Importe: '',
                 Descuento: '',
+                ObjetoImp: '01'
             });
          concepto.traslado({
                Base: '',
@@ -111,21 +123,19 @@ export default defineComponent({
 
    await cfd.concepto(concepto);
 
-   const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '', TotalImpuestosTrasladados: ''});
-
-         impuesto.traslados({
-               Impuesto: '',
-               TipoFactor: '',
-               TasaOCuota: '',
-               Importe: '',
-         });
-         impuesto.retenciones({
-                Impuesto: '',
-                TipoFactor: '',
-                TasaOCuota: '',
-                Importe: '',
-         });
-   await cfd.impuesto(impuesto);
+   const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
+   impuesto.traslados({
+       Base: 1,
+       Impuesto: '002',
+       TipoFactor: 'Tasa',
+       TasaOCuota: '0.16',
+       Importe: '59.17',
+   });
+   impuesto.retenciones({
+       Impuesto: '002',
+       Importe: '59.17',
+   });
+   await cfd.impuesto(impuesto)
    await cfd.certificar(cer);
    await cfd.sellar(key, '12345678a');
    const xml = await cfd.getXmlCdfi();

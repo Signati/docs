@@ -1,7 +1,7 @@
 <template>
   <section>
     <h3 class="display-1 basil--text">
-      #  Estructura General CFDI 3.3
+      #  Estructura General CFDI 4.0
     </h3>
     <Markup :code="code" language="typescript"></Markup>
     <br>
@@ -19,8 +19,8 @@ export default defineComponent({
   head: () => {
     return {
       ...genAppMetaInfo({
-        title: "EJEMPLO - Node JS CFDI 3.3",
-        description: 'Ejemplo de la creacion de un CDFI 3.3',
+        title: "EJEMPLO - Node JS CFDI 4.0",
+        description: 'Ejemplo de la creacion de un CDFI 4.0',
         keywords: "signati,php ,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
         url: 'https://docs.signati.app/nodejs/example'
       }),
@@ -142,7 +142,7 @@ export default defineComponent({
    `
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Serie="" Folio="" Fecha="" Sello="" FormaPago="" NoCertificado="" Certificado="" CondicionesDePago="" SubTotal="" Descuento="" Moneda="" TipoCambio="" Total="" TipoDeComprobante="" MetodoPago="" LugarExpedicion="" Confirmacion="">
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv40.xsd" Version="4.0" Serie="" Folio="" Fecha="" Sello="" FormaPago="" NoCertificado="" Certificado="" CondicionesDePago="" SubTotal="" Descuento="" Moneda="" TipoCambio="" Total="" TipoDeComprobante="" MetodoPago="" LugarExpedicion="" Confirmacion="">
   <cfdi:CfdiRelacionados TipoRelacion="">
     <cfdi:CfdiRelacionado UUID=""/>
   </cfdi:CfdiRelacionados>

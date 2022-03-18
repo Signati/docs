@@ -52,7 +52,7 @@ export default defineComponent({
   head: () => {
     return {
       ...genAppMetaInfo({
-        title: "Node Js CFDI 3.3 & 4.0",
+        title: "Node Js CFDI 4.0",
         description: 'Comienza instalando los requerimientos Windows, Linux y Mac',
         keywords: "signati,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
         url: 'https://docs.signati.app/getting-started/installation'

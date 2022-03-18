@@ -3,7 +3,7 @@
     <section class="docs_main">
       <h2 class="display-1 basil--text">
         <span class="primary--text">#</span>
-        Estructura General CFDI 3.3
+        Estructura General CFDI 4.0
       </h2>
 
       <h4>Ejemplo</h4>
@@ -24,8 +24,8 @@ export default defineComponent({
   head: () => {
     return {
       ...genAppMetaInfo({
-        title: "EJEMPLO - PHP CFDI 3.3",
-        description: 'Ejemplo de la creacion de un CDFI 3.3',
+        title: "EJEMPLO - PHP CFDI 4.0",
+        description: 'Ejemplo de la creacion de un CDFI 4.0',
         keywords: "signati,php ,saxon He,node, node js, php, laravel, Windows, Linux, Mac, SAT, CFDI",
         url: 'https://docs.signati.app/php/example'
       }),
@@ -58,7 +58,7 @@ $cfdi = new CFDI([
   'TipoDeComprobante' => 'I',
   'MetodoPago' => 'PUE',
   'LugarExpedicion' => '64000',
-], '3.3');
+], '4.0');
 
 $relacion = new Relacionado('01');
 $relacion->addRelacion('asdasdsad');
@@ -175,7 +175,7 @@ $cfdi->relacionados($relacion);
    `
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Serie="" Folio="" Fecha="" Sello="" FormaPago="" NoCertificado="" Certificado="" CondicionesDePago="" SubTotal="" Descuento="" Moneda="" TipoCambio="" Total="" TipoDeComprobante="" MetodoPago="" LugarExpedicion="" Confirmacion="">
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="4.0" Serie="" Folio="" Fecha="" Sello="" FormaPago="" NoCertificado="" Certificado="" CondicionesDePago="" SubTotal="" Descuento="" Moneda="" TipoCambio="" Total="" TipoDeComprobante="" MetodoPago="" LugarExpedicion="" Confirmacion="">
   <cfdi:CfdiRelacionados TipoRelacion="">
     <cfdi:CfdiRelacionado UUID=""/>
   </cfdi:CfdiRelacionados>

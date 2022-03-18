@@ -1,7 +1,7 @@
 <template>
   <section>
     <h3 class="display-1 basil--text">
-      #Sellar Xml CFDI 3.3
+      #Sellar Xml CFDI 4.0
     </h3>
     <br>
     <p>
@@ -26,7 +26,7 @@
 <cfdi:Comprobante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
                   xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd"
-                  Version="3.3"
+                  Version="4.0"
                   Serie=""
                   Folio=""
                   Fecha=""

@@ -237,7 +237,25 @@ sudo ./saxon-he-xVersion-install.sh
         icon: 'mdi-apple',
         color: 'grey',
         title: 'macOS',
-        bash: []
+        bash: [
+          {
+            step: 'Saxon-HE',
+            languaje: 'bash',
+            data: `
+             brew reinstall saxon
+             # Busca la ruta de instacion
+             /usr/local/Cellar/saxon/11.3: 16 files, 6.6MB
+
+            `
+          },
+          {
+            step: 'ln -s',
+            languaje: 'bash',
+            data: `
+           sudo ln -s /usr/local/Cellar/saxon/11.3/bin/saxon /usr/local/bin/transform
+            `
+          }
+        ]
       },
     ]
     const {commit} = useStore()

@@ -2,7 +2,7 @@
   <section>
 
     <Markup :code="`
-import { CFDI, Receptor } from '@signati/core';
+import { CFDI, Receptor } from '@cfdi/xml';
 
 const cfd = new CFDI();
 const receptor = new Receptor({

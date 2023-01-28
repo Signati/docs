@@ -55,7 +55,7 @@
       </v-simple-table>
       <Markup
         :code="`
-    import { CFDI, Concepts } from '@signati/core';
+    import { CFDI, Concepts } from '@cfdi/xml';
 
     const cfd = new CFDI();
     const concepto = new Concepts({
@@ -166,7 +166,7 @@
     <Markup
       language="typescript"
       :code="`
-import { CFDI, Iedu, Concepts, XmlIeduAttribute } from '@signati/core';
+import { CFDI, Iedu, Concepts, XmlIeduAttribute } from '@cfdi/xml';
 
 const cfd = new CFDI();
 const concepto = new Concepts({ ...});

@@ -46,6 +46,7 @@
                     <FirstList v-else
                                :secondchild="true"
                                :item="childone"
+                               :update="childone.update"
                     ></FirstList>
                     </span>
 

@@ -37,7 +37,7 @@
       </tbody></v-simple-table>
     <br>
     <Markup :code="`
-import { CFDI, EmisImpuestosor } from '@signati/core';
+import { CFDI, EmisImpuestosor } from '@cfdi/xml';
 const cfd = new CFDI();
 const impuesto = new Impuestos({TotalImpuestosRetenidos: ''});
             impuesto.traslados({

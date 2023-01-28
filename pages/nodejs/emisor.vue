@@ -29,7 +29,7 @@
     </v-simple-table>
     <br>
     <Markup :code="`
-import { CFDI, Emisor } from '@signati/core';
+import { CFDI, Emisor } from '@cfdi/xml';
 
 const cfd = new CFDI();
 const emisor = new Emisor({

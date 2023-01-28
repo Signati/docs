@@ -33,18 +33,19 @@ export default defineComponent({
   setup() {
     const code = `
     import { CFDI,
-         Comprobante,
+         CFDIAttributes,
          Concepts,
          Emisor,
          Impuestos,
          Receptor,
-         Relacionado }  from '@signati/core';
+         Relacionado }  from '@cfdi/xml';
 
-  const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
-  const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
-  const styleSheet = '4.0/cadenaoriginal.xslt';
+  const styleSheet = '/home/recreando/cadenaoriginal.xslt';
 
-  const comprobanteAttribute: Comprobante = {
+  const key = '/home/recreando/certificados/LAN7008173R5.key'
+  const cer = '/home/recreando/certificados/LAN7008173R5.cer';
+
+  const comprobanteAttribute: CFDIAttributes = {
     // xmlns: {
     //     xsi: 'http://www.w3.org/2001/XMLSchema-instance',
     //     cfdi: 'http://www.sat.gob.mx/cfd/3',

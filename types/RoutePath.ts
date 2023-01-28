@@ -7,12 +7,12 @@ export interface RoutePath {
   level: string;
   url: string;
   icon: string;
+  update?: boolean;
   children?: RoutePath[];
-  langs: TypeLangs[]
-
+  langs: TypeLangs[];
 }
 
 export interface TypeLangs {
-  name: string
-  view: boolean
+  name: string;
+  view: boolean;
 }

@@ -114,7 +114,7 @@
           <v-card-text>
             <v-sheet class="mb-4 mt-4">
               <Markup title="Installation Node JS" language="bash" code="
-npm i --save @signati/core
+npm i @cfdi/xml --save
 "></Markup>
             </v-sheet>
           </v-card-text>

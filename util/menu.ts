@@ -317,6 +317,28 @@ export let menu: RoutePath[] = [
     ]
   },
   {
+    id: 13,
+    isActive: 1,
+    throughout: false,
+    name: 'CSD',
+    fatherID: 8,
+    level: '1',
+    url: '/csd',
+    icon: 'mdi-certificate',
+    update: true,
+    children: [],
+    langs: [
+      {
+        name: 'nodejs',
+        view: true
+      },
+      {
+        name: 'php',
+        view: true
+      }
+    ]
+  },
+  {
     id: 9,
     isActive: 1,
     throughout: true,

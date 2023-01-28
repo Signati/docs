@@ -6,7 +6,7 @@
                  style="min-height: 32px; !important;max-height: 32px !important; margin-bottom: 4px;"
                  :class="statePropd.secondchild ? 'ml-3':''"
     >
-      <div v-if="statePropd.update" class="v-avatar flex-0-1-auto ml-n2"
+      <div v-if="update" class="v-avatar flex-0-1-auto ml-n2"
            style="height:5px;min-width:5px;width:5px;background-color:#00C58E;border-color:#00C58E; margin-right: 3px !important;"
       ></div>
       <v-list-item-icon class="m-0 mt-0 pt-1 mr-2">

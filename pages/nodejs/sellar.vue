@@ -10,7 +10,7 @@
     </p>
     <Markup language="typescript"
             :code="`
- import { CFDI } from '@signati/core';
+ import { CFDI } from '@cfdi/xml';
  const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
  const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
  const cfd = new CFDI();

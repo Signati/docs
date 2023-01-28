@@ -28,7 +28,7 @@
               </v-btn>
             </v-col>
             <v-col class="col-auto">
-              <v-btn href="https://github.com/Signati/core" large dark
+              <v-btn href="https://github.com/MisaelMa/cfdi" large dark
                      class="v-btn v-btn--has-bg theme--dark v-size--x-large">
                 <v-icon class="mr-2">
                   {{mdiGithub}}

@@ -25,7 +25,7 @@
     </v-simple-table>
     <br>
     <Markup :code="`
-import { CFDI, Relacionado } from '@signati/core';
+import { CFDI, Relacionado } from '@cfdi/xml';
 const cfd = new CFDI();
 
 const relation = new Relacionado({ TipoRelacion: '01' });

@@ -27,7 +27,7 @@ export default defineComponent({
   components:{
     Toolbar
   },
-  setup(props, { root }) {
+  setup(props) {
     const context = useContext()
     const router = useRouter()
     const clipped = ref<boolean>(false);

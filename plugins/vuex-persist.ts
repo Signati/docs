@@ -1,13 +1,11 @@
 // ~/plugins/vuex-persist.js
 // @ts-ignore
-import VuexPersistence from 'vuex-persist'
-import type {Context} from '@nuxt/types'
-
-export default ({store}: Context) => {
+import VuexPersistence from "vuex-persist";
+export default ({ store }: any) => {
   new VuexPersistence({
     storage: window.localStorage,
-    modules: ['theme'],
+    modules: ["theme"],
     // asyncStorage: true
     /* your options */
-  }).plugin(store)
-}
+  }).plugin(store);
+};

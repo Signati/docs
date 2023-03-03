@@ -3,9 +3,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   telemetry: false,
-  server: {
-    port: 8082
-  },
   // router: {
   //   base: '/nodejs/v33'
   // },

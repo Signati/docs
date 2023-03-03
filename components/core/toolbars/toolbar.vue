@@ -14,9 +14,8 @@
     <v-spacer/>
     <Search></Search>
     <v-spacer/>
-    v{{vrs}}
-    <v-btn icon href="https://github.com/Signati/core" target="_blank" color="black">
-      <v-icon>{{ mdiGithub }}</v-icon>
+    <v-btn  href="https://cfdi.recreando.dev/es/getting-started/installation" target="_blank" color="primary">
+      Nueva Documentacion
     </v-btn>
 
     <v-menu offset-y>
